@@ -1,4 +1,4 @@
-import { CartService, Cart, AccountService, OrderService, CategoryService } from '@congacommerce/ecommerce';
+import { CartService, Cart, AccountService, OrderService, PriceListService, CategoryService } from '@congacommerce/ecommerce';
 import { ExceptionService } from '@congacommerce/elements';
 import { OutputFieldComponent } from '@congacommerce/elements';
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
@@ -24,6 +24,7 @@ export class ActionBarComponent implements OnInit {
     private accountService: AccountService,
     private exceptionService: ExceptionService,
     private orderService: OrderService,
+    private priclistService: PriceListService,
     private categoryService: CategoryService)
     { }
 
@@ -45,7 +46,6 @@ export class ActionBarComponent implements OnInit {
       () => {
         this.exceptionService.showSuccess('ACTION_BAR.CHANGE_ACCOUNT_MESSAGE', 'ACTION_BAR.CHANGE_ACCOUNT_TITLE');
         this.accountField.handleHidePop();
-        this.categoryService.refresh();
       }
     );
   }

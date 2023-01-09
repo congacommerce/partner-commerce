@@ -1,7 +1,8 @@
 {
     "ERROR": {
-        "OPTION_GROUP" : {
-            "ERROR" : "fr_FR Option Group Errors",
+        "RECORD_ERROR" : "fr_FR This record has pending errors",
+        "OPTION_GROUP": {
+            "ERROR": "fr_FR Option Group Errors",
             "MIN_OPTIONS": "fr_FR You must select at least {{value}} options.",
             "MAX_OPTIONS": "fr_FR You can select no more than {{value}} options.",
             "MIN_TOTAL_QUANTITY": "fr_FR The total minimum quantity is {{value}}.",
@@ -14,7 +15,7 @@
             "SERVER_ERROR": "fr_FR Oops something went wrong.",
             "PRICE_CHANGE": "fr_FR The price of your cart has been updated",
             "PRICE_CHANGE_TOASTR_TITLE": "fr_FR Price Update",
-            "VALIDATE" : "fr_FR There are errors in your cart.",
+            "VALIDATE": "fr_FR There are errors in your cart.",
             "CONSTRAINT_RULES": "fr_FR An item in your cart violated 1 or more constraint rules."
         },
         "CART_ITEM": {
@@ -24,11 +25,19 @@
             "ASSOCIATE_AND_APPLY": "fr_FR An error ocurred getting the constraint rules for your cart."
         },
         "PROMOTION": {
-            "INVALID_TOASTR_MESSAGE": "fr_FR Promotion {{name}} is not applied.",
-            "INVALID_TOASTR_TITLE": "fr_FR Promotion Not Applied"
+            "PROMOTION_OR_COUPON_NOT_AVAILABLE": "fr_FR Promotion {{name}} could not be applied.",
+            "INVALID_PROMOTION_TITLE": "fr_FR Promotion Not Applied",
+            "INVALID_COUPON_TITLE": "fr_FR Coupon Not Applied",
+            "COUPON_CODE_EXPIRED": "fr_FR Coupon {{name}} is expired.",
+            "INACTIVE_COUPON_CODE": "fr_FR Coupon {{name}} is not valid.",
+            "COUPON_LIMIT_EXCEEDED": "fr_FR Coupon {{name}} usage limit is exceeded",
+            "TABLE_COL_OPTION": "fr_FR Option"
         },
         "APPLICATION_ERROR_TOASTR_TITLE": "fr_FR Application Error",
-        "INVALID_QUANTITY": "fr_FR Cannot add a quantity less than 1"
+        "INVALID_QUANTITY": "fr_FR Cannot add a quantity less than 1",
+        "SESSION_EXPIRATION":"fr_FR Session is expired, login again to proceed",
+        "INACCESSIBLE_ORDER":"fr_FR Order not found or you do not have access to this order",
+        "INACCESSIBLE_QUOTE":"fr_FR Quote not found or you do not have access to this quote"
     },
     "SUCCESS": {
         "TITLE": "fr_FR Success",
@@ -37,16 +46,28 @@
             "ITEM_ADDED_TOASTR_TITLE": "fr_FR Item Added"
         },
         "PROMOTION": {
+            "VALID_PROMOTION_TITLE": "fr_FR Promotion Applied",
+            "VALID_PROMOTION_MESSAGE": "fr_FR Promotion {{name}} is applied successfully",
             "REMOVED_TOASTR_MESSAGE": "fr_FR Promotion {{name}} has been removed.",
             "REMOVED_TOASTR_TITLE": "fr_FR Promotion Removed"
         },
         "CONFIGURATION_UPDATED": "fr_FR Your configuration has been updated.",
         "QUOTE_UPDATED": "fr_FR Quote Updated Successfully!",
         "QUOTE_UPDATE_TITLE": "fr_FR Quote Update",
-        "GENERATED": "fr_FR Your order document has been generated and can be viewed under the 'Attachments' tab.",
+        "GENERATED": "fr_FR Your {{type}} document has been generated and can be viewed under the 'Attachments' tab.",
         "DOCUMENT_GENERATED_TITLE": "fr_FR Document Generated",
-        "PRESENTED": "fr_FR Your order document has been presented to {{primary_contact}} and email notification is sent out.",
-        "DOCUMENT_PRESENTED_TITLE": "Document Presented"
+        "PRESENTED": "fr_FR Your {{type}} document has been presented to {{primary_contact}} and email notification is sent out.",
+        "DOCUMENT_PRESENTED_TITLE": "Document Presented",
+        "FAVORITE": {
+            "TITLE": "fr_FR Favorite items added!",
+            "ADD_FAVORITE": "fr_FR Added new {{name}} Favorite.",
+            "UPDATE_FAVORITE": "fr_FR Updated existing {{name}} Favorite",
+            "ADD_FAVORITE_TO_CART": "fr_FR Items from {{name}} were added to the cart."
+        }
+    },
+    "INFO": {
+        "TITLE": "fr_FR Info",
+        "GENERATE_INFO": "fr_FR Your {{type}} document is being generated. You will get notified when its ready."
     },
     "ASSETS": {
         "TERMINATE_SUCCESS": "fr_FR The asset termination has been added to your cart.",
@@ -94,6 +115,10 @@
             "SET_ACTIVE": "fr_FR Set Active",
             "CART_CREATION_FAILED": "fr_FR Could not create cart. Please contact your administrator."
         },
+        "FAVORITE_DETAIL": {
+            "FAVORITE_SUMMARY": "fr_FR Favorite Summary",
+            "INACTIVE": "fr_FR Inactive"
+        },
         "ADDRESS_BOOK": {
             "NEW_ADDRESS": "fr_FR New Address",
             "SET_AS_DEFAULT": "fr_FR Set as Default",
@@ -124,6 +149,7 @@
             "QUOTES_BY_STATUS": "fr_FR Quotes By Status",
             "QUOTES_BY_DUE_DATE": "fr_FR Quotes By Due Date",
             "TOTAL_QUOTES": "fr_FR Total Quotes",
+            "FINALIZE": "fr_FR Finalize",
             "ATTACHMENTS": {
                 "TITLE": "fr_FR Attach new file(s)",
                 "INPUT_LABEL": "fr_FR Drop files to Attach or",
@@ -296,10 +322,12 @@
         "MY_ORDERS": "fr_FR My Orders",
         "MY_QUOTES": "fr_FR My Quotes",
         "MY_CARTS": "fr_FR My Carts",
+        "MY_FAVORITES": "fr_FR My Favorites",
         "INSTALLED_PRODUCTS": "fr_FR Installed Products",
         "MY_ACCOUNT_SETTINGS": "fr_FR My Account Settings",
         "ACCOUNT": "fr_FR Account",
         "ORDER_ID": "fr_FR Order ID",
+        "QUOTE_ID": "fr_FR Quote ID",
         "TOTAL_ORDERS": "fr_FR Total Orders",
         "ORDER_AMOUNT_BY_STATUS": "fr_FR ORDER AMOUNT BY STATUS",
         "CC": "fr_FR CC",
@@ -309,9 +337,19 @@
         "CHANGES_ONLY": "fr_FR Changes Only",
         "OPTION_TOTAL": "fr_FR Option Total",
         "ITEMIZED_OPTIONS": "fr_FR Itemized Options",
-        "PRICE_NOT_AUTOUPDATED":"fr_FR * Prices shown in this page are not auto-updated.",
-        "UPDATE_PRICE":"fr_FR Update Prices",
-        "PRICE_ERROR": "fr_FR Pricing has failed for your cart. Please retry."
+        "PRICE_NOT_AUTOUPDATED": "fr_FR * Prices shown in this page are not auto-updated.",
+        "UPDATE_PRICE": "fr_FR Update Prices",
+        "PRICE_ERROR": "fr_FR Pricing has failed for your cart. Please retry.",
+        "FAVORITES": "fr_FR Favorites",
+        "SELECTIONS": "fr_FR Selections",
+        "PRODUCTS": "fr_FR Products",
+        "CARTITEMS": "fr_FR Cart Items",
+        "SAVE_FAVORITE": "fr_FR Save as favorite",
+        "CLONE": "fr_FR Clone",
+        "SELECT_ACTION": "fr_FR Select action",
+        "CONFIRM": "fr_FR Confirm",
+        "EDIT_LAYOUT": "fr_FR Edit Layout",
+        "ADDITIONAL_INFORMATION":"fr_FR Additional Information"
     },
     "REVALIDATE_CART": {
         "REVALIDATION_REQUIRED": "fr_FR Revalidation required",
@@ -327,7 +365,8 @@
         "PRODUCTNAME": "fr_FR Product Name",
         "REVALIDATION_WARNING": "fr_FR Some items in your cart need to be validated",
         "VALIDATE_CART": "fr_FR Validate Cart",
-        "SUCCESSFULLY_REVALIDATED": "fr_FR Successfully revalidated"
+        "SUCCESSFULLY_REVALIDATED": "fr_FR Successfully revalidated",
+        "REVALIDATION_INFO":"fr_FR If you select an optional product, the entire bundle including other optional products too will be revalidated to maintain sanctity of the bundle product"
     },
     "CREATE_QUOTE": {
         "QUOTE_SUMMARY": "fr_FR QUOTE SUMMARY",
@@ -337,7 +376,7 @@
         "SHIP_TO_ACCOUNT": "fr_FR Ship to Account",
         "BILL_TO_ACCOUNT": "fr_FR Bill to Account",
         "SEARCH_CONTACTS": "fr_FR Search Contacts",
-        "FINALIZE_AND_SUBMIT" : "fr_FR Finalize & Submit Quote"
+        "FINALIZE_AND_SUBMIT": "fr_FR Finalize & Submit Quote"
     },
     "QUOTE_CONFIRMATION_MODAL": {
         "THANK_YOU": "fr_FR Thank You",
@@ -593,7 +632,8 @@
         "APPLIED_PROMOTIONS": "fr_FR Applied Promotions",
         "TOTAL_PROMOTION_AMOUNT": "fr_FR Total Promotion Amount",
         "PROMOTION_APPLIEDTO": "fr_FR Promotions Applied To",
-        "APPLIED_PROMOTION": "fr_FR applied to the following items in the cart."
+        "APPLIED_PROMOTION": "fr_FR applied to the following items in the cart.",
+        "COUPON_CODE": "fr_FR Coupon Code"
     },
     "LOGIN": {
         "PLS_SIGNIN": "fr_FR Please sign in",
@@ -674,8 +714,8 @@
         "RENEWAL_END_DATE": "fr_FR Renewal End Date",
         "USE_EXISTING_TERM": "fr_FR Use Existing Term",
         "TERMINATION_DATE": "fr_FR Termination Date",
-        "NEW_START_DATE":"fr_FR New Start Date",
-        "NEW_END_DATE":"fr_FR New End Date"
+        "NEW_START_DATE": "fr_FR New Start Date",
+        "NEW_END_DATE": "fr_FR New End Date"
     },
     "APP": {
         "PAGE_RELOADED_TOASTR_MESSAGE": "fr_FR This page has been reloaded.",
@@ -687,6 +727,7 @@
     "DETAILS": {
         "QUOTE_SUMMARY": "fr_FR QUOTE SUMMARY",
         "ORDER_SUMMARY": "fr_FR ORDER SUMMARY",
+        "FAVORITE_SUMMARY": "fr_FR FAVORITE SUMMARY",
         "LINE_ITEMS": "fr_FR LINE ITEMS",
         "COMMENTS": "fr_FR COMMENTS",
         "ATTACHMENTS": "fr_FR ATTACHMENTS",
@@ -696,13 +737,16 @@
         "GENERATED_ORDER_NUMBER": "fr_FR Your Order Number Is: {{orderName}}",
         "VIEW_YOUR_ORDER": "fr_FR VIEW YOUR ORDER",
         "GENERATE_ORDER": "fr_FR Generate Order",
+        "GENERATE_QUOTE": "fr_FR Generate Quote",
         "GENERATE": "fr_FR Generate",
         "TEMPLATE": "fr_FR Template",
         "FILE_FORMAT": "fr_FR File Format",
         "PRESENT": "fr_FR PRESENT",
         "PRESENT_ORDER": "fr_FR Present Order",
         "SEND_TO": "fr_FR Send Order To",
-        "MISSING_REQ_FIELDS": "fr_FR Some mandatory informations are missing in the order details. Please fill to proceed."
+        "SEND_QUOTE_TO": "fr_FR Send Quote To",
+        "MISSING_REQ_FIELDS": "fr_FR Some mandatory informations are missing in the order details. Please fill to proceed.",
+        "PRESENT_QUOTE":"fr_FR Present Quote"
     },
     "SERVICES": {
         "SELECTION_OF_ASSETS_MUST_TOOLTIP": "fr_FR Must select asset(s) to perform batch actions.",
@@ -755,9 +799,9 @@
         "CART_CREATION_TOASTR_MESSAGE": "fr_FR A new cart has been created.",
         "PRESENT": "fr_FR Present"
     },
-    "TABLE" : {
-        "SEARCH" : "fr_FR Search",
-        "SELECTED" : "fr_FR Selected",
+    "TABLE": {
+        "SEARCH": "fr_FR Search",
+        "SELECTED": "fr_FR Selected",
         "OF": "fr_FR of",
         "PER_PAGE": "fr_FR per page",
         "NO_DATA_TO_DISPLAY": "fr_FR No data to display"
@@ -768,6 +812,18 @@
         "CARTS": "fr_FR Carts",
         "PROPOSAL": "fr_FR Proposal",
         "ORDER": "fr_FR Order",
-        "CART": "fr_FR Cart"
+        "CART": "fr_FR Cart",
+        "FAVORITES": "fr_FR Favorites"
+    },
+    "FAVORITE": {
+        "VISIBILITY": "fr_FR Visibility",
+        "FAVORITE_MODAL": {
+            "ADD_FAVORITE": "fr_FR Add Favorite",
+            "SEARCH_OR_ADD_FAV": "fr_FR Search or add new favorite",
+            "MAKE_PUBLICLY_VISIBILE": "fr_FR Make publicly visible",
+            "ADD_NEW_FAVORITE": "fr_FR Add New <strong>{{search}}</strong> Favorite",
+            "ENTER_FAVORITE_NAME": "fr_FR Enter favorite name...",
+            "ADD_TO_EXISTING": "fr_FR Add to existing"
+        }
     }
 }
