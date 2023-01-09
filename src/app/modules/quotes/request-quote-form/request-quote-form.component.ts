@@ -78,21 +78,33 @@ export class RequestQuoteFormComponent implements OnInit {
   }
 
   shipToChange() {
-    this.shipToAccount$ = this.accountService.getAccount(this.quote.ShipToAccountId);
-    this.shipToAccount$.pipe(take(1)).subscribe((newShippingAccount) => {
-      this.quote.ShipToAccount = newShippingAccount;
+    if (this.quote.ShipToAccountId) {
+      this.shipToAccount$ = this.accountService.getAccount(this.quote.ShipToAccountId);
+      this.shipToAccount$.pipe(take(1)).subscribe((newShippingAccount) => {
+        this.quote.ShipToAccount = newShippingAccount;
+        this.onQuoteUpdate.emit(this.quote);
+      });
+    } else {
+      this.quote.ShipToAccount = null;
+      this.shipToAccount$= null;
       this.onQuoteUpdate.emit(this.quote);
-    });
+    }
   }
 
   billToChange() {
-    this.billToAccount$ = this.accountService.getAccount(this.quote.BillToAccountId);
-    this.billToAccount$.pipe(take(1)).subscribe((newBillingAccount) => {
-      this.quote.BillToAccount = newBillingAccount;
+    if (this.quote.BillToAccountId) {
+      this.billToAccount$ = this.accountService.getAccount(this.quote.BillToAccountId);
+      this.billToAccount$.pipe(take(1)).subscribe((newBillingAccount) => {
+        this.quote.BillToAccount = newBillingAccount;
+        this.onQuoteUpdate.emit(this.quote);
+      });
+    } else {
+      this.quote.BillToAccount = null;
+      this.billToAccount$= null;
       this.onQuoteUpdate.emit(this.quote);
-    });
-
+    }
   }
+
   getpriceList(){
     this.priceList$=this.plservice.getPriceList();
     this.priceList$.pipe(take(1)).subscribe((newPricelList) => {
@@ -100,11 +112,9 @@ export class RequestQuoteFormComponent implements OnInit {
       this.onQuoteUpdate.emit(this.quote);
     });
   }
- /**
-   * Event handler for when the primary contact input changes.
-   * @param event The event that was fired.
-   */
-  primaryContactChange() {
+
+primaryContactChange() {
+  if (this.contactId) {
     this.contactService.fetch(this.contactId)
       .pipe(take(1))
       .subscribe((newPrimaryContact: Contact) => {
@@ -112,6 +122,10 @@ export class RequestQuoteFormComponent implements OnInit {
         this.quote.Primary_ContactId = newPrimaryContact.Id;
         this.onQuoteUpdate.emit(this.quote);
       });
+  } else {
+    this.quote.Primary_Contact = null;
+    this.onQuoteUpdate.emit(this.quote);
   }
+}
 
 }
