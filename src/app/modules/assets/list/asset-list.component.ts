@@ -31,47 +31,25 @@ import { ClassType } from 'class-transformer/ClassTransformer';
   providers: [DatePipe]
 })
 export class AssetListComponent implements OnInit, OnDestroy {
-  /**
-   * The view object used for rendering information in the template.
-   */
+
   view$: BehaviorSubject<AssetListView> = new BehaviorSubject<AssetListView>(
     null
   );
 
   subscription: Subscription;
 
-  /**
-   * Value of the days to renew filter.
-   */
   renewFilter: AFilter;
 
-  /**
-   * Value of the price type filter.
-   */
   priceTypeFilter: AFilter;
 
-  /**
-   * Value of the asset action filter.
-   */
   assetActionFilter: AFilter;
 
-  /**
-   * Value of the product family field filter.
-   */
   productFamilyFilter: AFilter;
 
-  /**
-   * Value of the advanced filter component.
-   */
   advancedFilters: Array<AFilter> = [];
-  /**
-   * cart record
-   */
+
   cart: Cart;
 
-  /**
-   * Configuration object used to configure the data filter.
-   */
   advancedFilterOptions: FilterOptions = {
     visibleFieldsWithOperators: [
       {
@@ -165,9 +143,6 @@ export class AssetListComponent implements OnInit, OnDestroy {
     ]
   };
 
-  /**
-   * Default filters that will be applied to the table and chart components.
-   */
   defaultFilters: Array<AFilter> = [
     new AFilter(this.assetService.type, [
       new ACondition(this.assetService.type, 'LineType', 'NotEqual', 'Option'),
@@ -176,14 +151,8 @@ export class AssetListComponent implements OnInit, OnDestroy {
     ])
   ];
 
-  /**
-   * Flag to pre-select items in the table component.
-   */
   preselectItemsInGroups: boolean = false;
 
-  /**
-   * Color palette used for the chart component styling.
-   */
   colorPalette = [
     '#D22233',
     '#F2A515',
@@ -197,9 +166,6 @@ export class AssetListComponent implements OnInit, OnDestroy {
     '#fd7e14'
   ];
 
-  /**
-   * Map of asset actions to their appropriate filter.
-   */
   private assetActionMap = {
     All: null,
     Renew: new AFilter(AssetLineItem, [
@@ -241,17 +207,14 @@ export class AssetListComponent implements OnInit, OnDestroy {
     protected cartService: CartService,
     protected toastr: ToastrService,
     private storefrontService: StorefrontService
-  ) {}
+  ) { }
 
-  /**
-   * @ignore
-   */
   ngOnInit() {
     if (!_.isEmpty(_.get(this.route, 'snapshot.queryParams'))) {
       this.preselectItemsInGroups = true;
       this.assetActionFilter = this.assetActionMap[
         _.get(this.route, 'snapshot.queryParams.action')
-        ];
+      ];
       this.advancedFilters = [
         new AFilter(
           this.assetService.type,
@@ -278,9 +241,6 @@ export class AssetListComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
   }
 
-  /**
-   * Loads the view data.
-   */
   loadView() {
     this.ngOnDestroy();
     this.subscription = combineLatest(
@@ -315,7 +275,7 @@ export class AssetListComponent implements OnInit, OnDestroy {
             lookups: [
               {
                 field: 'AttributeValueId'
-              }, 
+              },
               {
                 field: 'ProductId'
               }
@@ -412,54 +372,31 @@ export class AssetListComponent implements OnInit, OnDestroy {
       });
   }
 
-  /**
-   * Event handler for when the advanced filter changes.
-   * @param event The event that was fired.
-   */
   handleAdvancedFilterChange(event: any) {
     this.advancedFilters = event;
     this.loadView();
   }
 
-  /**
-   * Event handler for when the days to renew filter is changed.
-   * @param event The Event that was fired.
-   */
   onRenewalChange(event: AFilter) {
     this.renewFilter = event;
     this.loadView();
   }
 
-  /**
-   * Event handler for when price type filter is changed.
-   * @param event Event object that was fired.
-   */
   onPriceTypeChange(event: AFilter) {
     this.priceTypeFilter = event;
     this.loadView();
   }
 
-  /**
-   * Event handler for when the asset action filter changes.
-   * @param event The event that was fired.
-   */
   onAssetActionChange(event: string) {
     this.assetActionFilter = this.assetActionMap[event];
     this.loadView();
   }
 
-  /**
-   * Event handler for when the product family filter changes.
-   * @param event The event that was fired.
-   */
   onProductFamilyChange(event: AFilter) {
     this.productFamilyFilter = event;
     this.loadView();
   }
 
-  /**
-   * Get all the currently applied filters.
-   */
   private getFilters() {
     return _.concat(
       this.defaultFilters,
@@ -539,7 +476,6 @@ export class AssetListComponent implements OnInit, OnDestroy {
     ];
   }
 }
-/** @ignore */
 interface AssetListView {
   tableOptions: TableOptions;
   assetType: ClassType<AObject>;

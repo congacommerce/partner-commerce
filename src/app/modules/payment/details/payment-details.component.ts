@@ -13,32 +13,12 @@ import { PaymentTransaction, Order, UserService, OrderService } from '@congacomm
 })
 export class PaymentDetailsComponent implements OnInit, OnDestroy {
 
-  /**
-   * Instance of Order object.
-   */
   @Input() order: Order;
-  /** @ignore */
   @ViewChild('paymentForm') paymentForm: TemplateRef<any>;
-  /**
-   * Instance of Payment transaction object.
-  */
   paymentTransaction: PaymentTransaction;
-  /**
-   * Flag to check the payment status.
-  */
   isPaymentCompleted: boolean = false;
-
-  /**
-   * Flag to show/hide payment options.
-   */
   showPaymentOptions: boolean = false;
-  /**
-   * Flag to identify payment type. silentsale/hosted
-   */
   isSilentSale: boolean = true;
-  /**
-   * Flag when set to true makes payment against the payment method selected.
-   */
   makePaymentRequest: boolean = false;
   paymentState: 'PONUMBER' | 'INVOICE' | 'PAYNOW' | '' = '';
 
@@ -67,18 +47,12 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.userService.getCurrentUserLocale(false).subscribe((currentLocale) => this.currentUserLocale = currentLocale));
   }
 
-  /**
-   * Create payment transaction object and show payment options.
-   */
   makePayment() {
     this.createPaymentTransaction();
     this.showPaymentOptions = true;
     this.modalRef = this.modalService.show(this.paymentForm, this.modalConfig);
   }
 
-  /**
-   * Captures the card option selected for payment.
-  */
   onSelectingPaymentMethod(eve) {
     setTimeout(() => {
       this.isSilentSale = eve;
@@ -91,9 +65,6 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  /**
-   * Submit payment request when payment button is clicked.
-  */
   submitPayment() {
     this.loading = true;
     if (this.paymentState === 'PAYNOW')
@@ -102,9 +73,7 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
     else
       this.onPaymentComplete('Success');
   }
-  /**
-   * Set payment completed flag to true
-  */
+
   onPaymentComplete(paymentStatus: string) {
     // Removed payment status assignment as its not a standard field on order
     if (paymentStatus !== 'Success') {
@@ -131,9 +100,6 @@ export class PaymentDetailsComponent implements OnInit, OnDestroy {
     this.orderService.update([this.order]).subscribe();
   }
 
-  /**
-   * Create payment transaction object
-   */
   createPaymentTransaction() {
     this.paymentTransaction = new PaymentTransaction();
     this.paymentTransaction.Currency = defaultTo(get(this.order, 'CurrencyIsoCode'), this.configurationService.get('defaultCurrency'));

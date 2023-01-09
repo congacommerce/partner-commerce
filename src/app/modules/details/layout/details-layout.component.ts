@@ -32,12 +32,6 @@ export class DetailsLayoutComponent implements AfterContentInit {
     _.set(this, 'sections.first.active', true);
   }
 
-  /**
-   * HostListener Decorator a DOM event to listen for, and provides a handler method to run when that
-   * event occurs. Here attaches listener to window on scroll event.
-   * In onScroll method assigns headerClass property with the class "'fixed-top' | 'fixed-top expand'" based on window
-   * pageYOffset and set the tab active.
-   */
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
     if (this.headerClass != null && window.pageYOffset < 35) {
@@ -53,12 +47,9 @@ export class DetailsLayoutComponent implements AfterContentInit {
   }
   headerClass: 'fixed-top' | 'fixed-top expand' = null;
 
-  /**
-   * scrollTo method scrolls the page to the specified tab content.
-   */
   scrollTo(tab: DetailSectionComponent) {
     const index = _.findIndex(this.sections.toArray(), t => t.title === tab.title);
-    if(index === 0)
+    if (index === 0)
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     else
       window.scrollTo({ top: tab.element.nativeElement.offsetTop - this.headerNav.nativeElement.offsetHeight, left: 0, behavior: 'smooth' });
@@ -78,11 +69,11 @@ export class DetailsLayoutComponent implements AfterContentInit {
     }
   }
 
-  trackByComponent(index, tab: DetailSectionComponent){
+  trackByComponent(index, tab: DetailSectionComponent) {
     return tab.title;
   }
 
-  getElementPercentage(el){
+  getElementPercentage(el) {
     let top = el.offsetTop;
     const height = el.offsetHeight;
 
@@ -97,9 +88,9 @@ export class DetailsLayoutComponent implements AfterContentInit {
     const startB = window.pageYOffset + this.headerNav.nativeElement.offsetHeight;
     const endB = window.pageYOffset + window.innerHeight;
 
-    if(startB > endA || startA > endB)
+    if (startB > endA || startA > endB)
       return 0;
-    else{
+    else {
       const startO = (startA > startB) ? startA : startB;
       const endO = (endA < endB) ? endA : endB;
       return (endO - startO) / height;

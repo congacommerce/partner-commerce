@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, TemplateRef, ViewChild  } from '@angular/core';
+import { Component, OnChanges, Input, TemplateRef, ViewChild } from '@angular/core';
 import {
   Cart,
   QuoteService,
@@ -51,22 +51,21 @@ export class SummaryComponent implements OnChanges {
 
   generatedQuote: Quote;
 
-  /** @ignore */
   generatedQuoteName: string;
 
   lineItems: Array<CartItem>;
 
-  get itemCount(): number{
+  get itemCount(): number {
     let count = 0;
-    if(_.get(this.cart, 'LineItems'))
+    if (_.get(this.cart, 'LineItems'))
       this.cart.LineItems.filter(p => p.LineType === 'Product/Service').forEach(r => count += Number(r.Quantity));
     return count;
   }
 
   constructor(private quoteService: QuoteService,
-              private cartItemService: CartItemService,
-              private modalService: BsModalService,
-              private translate: TranslateService) {
+    private cartItemService: CartItemService,
+    private modalService: BsModalService,
+    private translate: TranslateService) {
     this.state = {
       configurationMessage: null,
       downloadLoading: false,
@@ -84,9 +83,9 @@ export class SummaryComponent implements OnChanges {
     this.quoteService.convertCartToQuote().subscribe(
       res => {
         this.generatedQuote = res;
-        this.translate.stream('CART.CART_SUMMARY.QUOTE_GENERATED', {value: this.generatedQuote.Name}).subscribe((
-          quoteMessage:string) => {
-            this.generatedQuoteName = quoteMessage;
+        this.translate.stream('CART.CART_SUMMARY.QUOTE_GENERATED', { value: this.generatedQuote.Name }).subscribe((
+          quoteMessage: string) => {
+          this.generatedQuoteName = quoteMessage;
         });
         this.state.requestQuoteLoading = false;
         this.confirmationModal = this.modalService.show(this.confirmationTemplate);
@@ -98,18 +97,18 @@ export class SummaryComponent implements OnChanges {
     );
   }
 
-  generatePdf(){}
+  generatePdf() { }
 
   openModal(lineItem: CartItem) {
     this.lineItem = lineItem;
 
     setTimeout(() => {
-     this.summaryModal.show();
+      this.summaryModal.show();
     });
   }
 }
-/** @ignore */
-export interface SummaryState{
+
+export interface SummaryState {
   configurationMessage: string;
   downloadLoading: boolean;
   requestQuoteMessage: string;

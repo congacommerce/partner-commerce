@@ -2,8 +2,8 @@ import { Input, Component, ChangeDetectionStrategy, OnChanges } from '@angular/c
 import { Product, ProductInformation, ProductInformationService } from '@congacommerce/ecommerce';
 import { Observable } from 'rxjs';
 @Component({
-    selector: 'app-tab-attachments',
-    template: `
+  selector: 'app-tab-attachments',
+  template: `
       <table class="table table-sm">
         <thead>
           <tr>
@@ -25,37 +25,27 @@ import { Observable } from 'rxjs';
         </tbody>
       </table>
     `,
-    styles: [`
+  styles: [`
       :host{
         font-size: smaller;
       }
     `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-/**
- * Tab Attachments Component displays the list of attachment for the product.
- */
-export class TabAttachmentsComponent implements OnChanges{
 
-    @Input() product: Product;
+export class TabAttachmentsComponent implements OnChanges {
 
-    /**
-     * productInformation Observable to get product information.
-     */
-    productInformation$: Observable<ProductInformation[]>;
+  @Input() product: Product;
 
-    constructor(private productInformationService: ProductInformationService){}
+  productInformation$: Observable<ProductInformation[]>;
 
-    ngOnChanges(){
-      this.productInformation$ = this.productInformationService.getProductInformation(this.product.Id);
-    }
-    /**
-     * getAttachmentUrl method fetches the attachment url based on attachment id and product id.
-     * @param attachmentId is a string consisting of attachment id
-     * @param productId is a string consisting of product id.
-     * @returns the attachment url which is type of string
-     */
-    getAttachmentUrl(attachmentId, productId){
-      return this.productInformationService.getAttachmentUrl(attachmentId,productId);
-    }
+  constructor(private productInformationService: ProductInformationService) { }
+
+  ngOnChanges() {
+    this.productInformation$ = this.productInformationService.getProductInformation(this.product.Id);
+  }
+
+  getAttachmentUrl(attachmentId, productId) {
+    return this.productInformationService.getAttachmentUrl(attachmentId, productId);
+  }
 }

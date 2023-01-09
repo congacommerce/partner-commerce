@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { Cart, CartItem, CartService, ConstraintRuleService, LineItemService, Product, Order, Quote, ItemGroup, QuoteService } from '@congacommerce/ecommerce';
 import { Observable, combineLatest } from 'rxjs';
-import { filter, get, isNil }  from 'lodash';
+import { filter, get, isNil } from 'lodash';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { map as rmap, take } from 'rxjs/operators';
@@ -19,27 +19,21 @@ export class CartDetailComponent implements OnInit {
   @ViewChild('confirmationTemplate') confirmationTemplate: TemplateRef<any>;
 
   discardChangesModal: BsModalRef;
-  /**
-   * Observable of the information for rendering this view.
-   */
+
   view$: Observable<ManageCartState>;
-  /**
-   * Quote Response Object Model
-   */
+
   quoteConfirmation: Quote;
-  /**
-   * Stores confirmation model
-   */
+
   confirmationModal: BsModalRef;
   loading: boolean = false;
   primaryLI: Array<CartItem> = [];
 
-  constructor(private crService: ConstraintRuleService, 
-              private cartService: CartService, 
-              private quoteService:QuoteService,
-              private modalService: BsModalService,
-              private ngZone: NgZone,
-              private cdr: ChangeDetectorRef) { }
+  constructor(private crService: ConstraintRuleService,
+    private cartService: CartService,
+    private quoteService: QuoteService,
+    private modalService: BsModalService,
+    private ngZone: NgZone,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.view$ = combineLatest([
@@ -76,10 +70,9 @@ export class CartDetailComponent implements OnInit {
         this.loading = false;
       }
     );
- }
+  }
 }
 
-/** @ignore */
 export interface ManageCartState {
   cart: Cart;
   lineItems: Array<ItemGroup>;

@@ -17,14 +17,9 @@ import { ExceptionService, LookupOptions, RevalidateCartService } from '@congaco
   encapsulation: ViewEncapsulation.None
 })
 export class OrderDetailComponent implements OnInit, OnDestroy, AfterViewChecked {
-  /**
-    * String containing the lookup fields to be queried for an order record.
-    */
+
   private orderLookups = `PriceListId,PrimaryContact,Owner,CreatedBy,ShipToAccountId`;
 
-  /**
-   * Observable instance of an Order.
-   */
   order$: BehaviorSubject<Order> = new BehaviorSubject<Order>(null);
   orderLineItems$: BehaviorSubject<Array<ItemGroup>> = new BehaviorSubject<Array<ItemGroup>>(null);
   noteList$: BehaviorSubject<Array<Note>> = new BehaviorSubject<Array<Note>>(null);
@@ -37,14 +32,8 @@ export class OrderDetailComponent implements OnInit, OnDestroy, AfterViewChecked
   private subscriptions: Subscription[] = [];
   orderGenerated: boolean = false;
 
-  /**
-   * String containing the lookup fields to be queried for a proposal record.
-   */
   private proposalLookups = `PriceListId,Primary_Contact,BillToAccountId,ShipToAccountId,AccountId,OpportunityId,Owner`;
 
-  /**
-   * Boolean observable to check if user is logged in.
-   */
   isLoggedIn$: Observable<boolean>;
 
   orderStatusSteps = [
@@ -178,9 +167,6 @@ export class OrderDetailComponent implements OnInit, OnDestroy, AfterViewChecked
     this.ngZone.run(() => this.order$.next(cloneDeep(order)));
   }
 
-  /**
-   * @ignore
-   */
   getNotes() {
     if (this.noteSubscription) this.noteSubscription.unsubscribe();
     this.noteSubscription = this.activatedRoute.params
@@ -193,16 +179,10 @@ export class OrderDetailComponent implements OnInit, OnDestroy, AfterViewChecked
     this.subscriptions.push(this.noteSubscription);
   }
 
-  /**
-   * @ignore
-   */
   getTotalPromotions(orderLineItems: Array<OrderLineItem> = []): number {
     return orderLineItems.length ? sum(orderLineItems.map(res => res.IncentiveAdjustmentAmount)) : 0;
   }
 
-  /**
-   * @ignore
-   */
   getChildItems(orderLineItems: Array<OrderLineItem>, lineItem: OrderLineItem): Array<OrderLineItem> {
     return orderLineItems.filter(orderItem => !orderItem.IsPrimaryLine && orderItem.PrimaryLineNumber === lineItem.PrimaryLineNumber);
   }
@@ -221,9 +201,6 @@ export class OrderDetailComponent implements OnInit, OnDestroy, AfterViewChecked
     });
   }
 
-  /**
-   * @ignore
-   */
   onGenerateOrder() {
     if (this.attachmentSection) this.attachmentSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
     this.getOrder();

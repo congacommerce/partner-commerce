@@ -25,74 +25,39 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   @ViewChild('confirmationTemplate') confirmationTemplate: TemplateRef<any>;
   @ViewChild('priceSummary') priceSummary: PriceSummaryComponent;
 
-  /**
-   * An Observable containing the current contact record
-   */
+
   primaryContact: Contact;
-  /**
-   * If shilling and billing addresses are same or not.
-   */
+
   shippingEqualsBilling: boolean = true;
-  /**
-   * Order Object Model
-   */
+
   order: Order;
-  /**
-   * Order Response Object Model
-   */
+
   orderConfirmation: Order;
-  /**
-   * Card Model (name, card number, expiration date, etc)
-   */
+
   card: Card;
-  /**
-   * Loading flag for spinner
-   */
+
   loading: boolean = false;
-  /**
-   * Unique Id
-   */
+
   uniqueId: string;
-  /**
-   * Payment state such as Card and Invoice
-   * Default is blank
-   */
+
   paymentState: 'PONUMBER' | 'INVOICE' | 'PAYNOW' | '' = '';
-  /**
-   * Stores confirmation model
-   */
+
   confirmationModal: BsModalRef;
-  /**
-   * A hot observable containing the user information
-   */
+
   user$: Observable<User>;
-  /**
-   * A hot observable containing the account information
-   */
+
   account$: Observable<Account>;
-  /**
-   * Current selected locale for logged in user
-  */
+
   currentUserLocale: string;
-  /**
-   * flag to check the payment process
-  */
+
   isPaymentCompleted: boolean = false;
-  /**
-   * flag to check if the flow started for payment
-  */
+
   isPayForOrderEnabled: boolean = false;
-  /**
-   * flag to enable make payment button against of payment method
-  */
+
   isMakePaymentRequest: boolean = false;
-  /**
-   * payment transaction object
-  */
+
   paymentTransaction: PaymentTransaction;
-  /**
-   * order amount to charge on payment
-  */
+
   orderAmount: string;
   errMessages: any = {
     requiredFirstName: '',
@@ -116,18 +81,18 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(private cartService: CartService,
-              public configurationService: ConfigurationService,
-              private orderService: OrderService,
-              private modalService: BsModalService,
-              public contactService: ContactService,
-              private translate: TranslateService,
-              private userService: UserService,
-              private accountService: AccountService,
-              private emailService: EmailService,
-              private router: Router,
-              private ngZone: NgZone,
-              private toastr: ToastrService,
-              private exceptionService: ExceptionService) {
+    public configurationService: ConfigurationService,
+    private orderService: OrderService,
+    private modalService: BsModalService,
+    public contactService: ContactService,
+    private translate: TranslateService,
+    private userService: UserService,
+    private accountService: AccountService,
+    private emailService: EmailService,
+    private router: Router,
+    private ngZone: NgZone,
+    private toastr: ToastrService,
+    private exceptionService: ExceptionService) {
     this.uniqueId = uniqueId();
   }
 
@@ -187,12 +152,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.onShipToChange();
   }
 
-  /**
-   * Allow to switch address tabs if billing and shipping address are diffrent.
-   *
-   * @param evt Event that identifies if Shipping and billing addresses are same.
-   *
-   */
   selectTab(evt) {
     if (evt)
       this.staticTabs.tabs[0].active = true;
@@ -201,9 +160,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * Allows user to submit order. Convert a cart to order and submit it.
-   */
   submitOrder() {
     const orderAmountGroup = find(get(this.cart, 'SummaryGroups'), c => get(c, 'LineType') === 'Grand Total');
     this.orderAmount = defaultTo(get(orderAmountGroup, 'NetPrice', 0).toString(), '0');
@@ -236,30 +192,23 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     // }
   }
 
-
-  /**
-   * Generates a unique id for different components
-   *
-   * @param id ids such as 'firstName', 'lastName', 'email', etc
-   * @returns uniqueid
-   */
   getId(id: string): string {
     return this.uniqueId + '_' + id;
   }
 
   onBillToChange() {
-    if(this.order.BillToAccountId)
+    if (this.order.BillToAccountId)
       this.billToAccount$ = this.accountService.getAccount(this.order.BillToAccountId).pipe(map(res => this.order.BillToAccount = res));
   }
 
   onShipToChange() {
-    if(this.order.ShipToAccountId)
+    if (this.order.ShipToAccountId)
       this.shipToAccount$ = this.accountService.getAccount(this.order.ShipToAccountId).pipe(map(res => this.order.ShipToAccount = res));
   }
 
   onPrimaryContactChange() {
     this.subscriptions.push(
-      this.contactService.getContact({Id: this.order.PrimaryContactId}).subscribe(c => {
+      this.contactService.getContact({ Id: this.order.PrimaryContactId }).subscribe(c => {
         this.order.PrimaryContactId = get(c, 'Id');
         this.order.PrimaryContact = c;
       })
@@ -280,17 +229,9 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         });
   }
 
-  /**
-   * Prepare payment request transaction data for payment
-   *
-   * @param user current logged in user details
-   * @param billingAccount selected billing account for logged in user
-   * @param currentLocale get current user locale with hyphen
-   * @returns PaymentTransaction which conatins payment request details
-   */
   requestForPayment(orderDetails: Order) {
     this.paymentTransaction = new PaymentTransaction();
-    this.paymentTransaction.Currency = defaultTo(get(orderDetails, 'CurrencyIsoCode'),this.configurationService.get('defaultCurrency'));
+    this.paymentTransaction.Currency = defaultTo(get(orderDetails, 'CurrencyIsoCode'), this.configurationService.get('defaultCurrency'));
     this.paymentTransaction.CustomerFirstName = get(this.primaryContact, 'FirstName');
     this.paymentTransaction.CustomerLastName = get(this.primaryContact, 'LastName');
     this.paymentTransaction.CustomerEmailAddress = get(this.primaryContact, 'Email');
@@ -302,25 +243,19 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     this.paymentTransaction.CustomerBillingAccountName = get(orderDetails.BillToAccount, 'Name');
     this.paymentTransaction.CustomerBillingAccountID = get(orderDetails.BillToAccount, 'Id');
     this.paymentTransaction.isUserLoggedIn = this.isLoggedIn;
-    this.paymentTransaction.OrderAmount =  this.orderAmount;
-    this.paymentTransaction.Locale = this.currentUserLocale ;
-    this.paymentTransaction.OrderName = get(orderDetails, 'Name') ;
+    this.paymentTransaction.OrderAmount = this.orderAmount;
+    this.paymentTransaction.Locale = this.currentUserLocale;
+    this.paymentTransaction.OrderName = get(orderDetails, 'Name');
     this.paymentTransaction.OrderGeneratedID = get(orderDetails, 'Id');
     this.isPayForOrderEnabled = true;
     this.pricingSummaryType = '';
   }
 
-  /**
-   * Submit paymen request for selected payment method
-  */
   submitPayment() {
     this.isMakePaymentRequest = true;
     this.priceSummary.setLoading(true);
   }
 
-  /**
-   * Set the PAYNOW option if payment method exist
-  */
   selectDefaultPaymentOption(isPaymentMethodExist) {
     if (isPaymentMethodExist) {
       this.paymentState = 'PAYNOW';
@@ -329,9 +264,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.paymentState = '';
     }
   }
-  /**
-   * Enabled make payment button if method selected
-  */
+
   onSelectingPaymentMethod(eve) {
     setTimeout(() => {
       if (eve) {
@@ -343,9 +276,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     });
   }
 
-  /**
-   * set event true of payment complete
-  */
   onPaymentComplete(paymentStatus: string) {
     if (paymentStatus !== 'Success') {
       this.translate.stream(['PAYMENT_METHOD_LABELS.ERROR_MSG', 'PAYMENT_METHOD_LABELS.ERROR_TITLE']).subscribe((val: string) => {
@@ -357,9 +287,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.subscriptions.push(this.emailService.guestUserNewOrderNotification(this.orderConfirmation.Id, `https://${window.location.hostname}${window.location.pathname}#/Orders/${this.orderConfirmation.Id}`).subscribe());
   }
 
-  /**
-    * Redirect to Order detail page
-   */
   redirectOrderPage() {
     this.ngZone.run(() => {
       this.router.navigate(['/orders', this.orderConfirmation.Id]);
@@ -374,7 +301,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     };
     this.confirmationModal = this.modalService.show(this.confirmationTemplate, ngbModalOptions);
     if (get(this.orderConfirmation, 'Id'))
-    this.emailService.guestUserNewOrderNotification(this.orderConfirmation.Id, `${this.configurationService.resourceLocation()}orders/${this.orderConfirmation.Id}`).pipe(take(1)).subscribe();
+      this.emailService.guestUserNewOrderNotification(this.orderConfirmation.Id, `${this.configurationService.resourceLocation()}orders/${this.orderConfirmation.Id}`).pipe(take(1)).subscribe();
   }
 
 

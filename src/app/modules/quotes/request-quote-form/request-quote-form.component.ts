@@ -60,9 +60,6 @@ export class RequestQuoteFormComponent implements OnInit {
       });
   }
 
-  /**
-   * This method adds comments to requesting quote.
-   */
   addComment() {
     if (this.quote) {
       this.quote.Description = this.note.Body;
@@ -70,9 +67,6 @@ export class RequestQuoteFormComponent implements OnInit {
     }
   }
 
-  /**
-   * @ignore
-   */
   quoteChange() {
     this.onQuoteUpdate.emit(this.quote);
   }
@@ -86,7 +80,7 @@ export class RequestQuoteFormComponent implements OnInit {
       });
     } else {
       this.quote.ShipToAccount = null;
-      this.shipToAccount$= null;
+      this.shipToAccount$ = null;
       this.onQuoteUpdate.emit(this.quote);
     }
   }
@@ -100,34 +94,31 @@ export class RequestQuoteFormComponent implements OnInit {
       });
     } else {
       this.quote.BillToAccount = null;
-      this.billToAccount$= null;
+      this.billToAccount$ = null;
       this.onQuoteUpdate.emit(this.quote);
     }
   }
 
-  getpriceList(){
-    this.priceList$=this.plservice.getPriceList();
+  getpriceList() {
+    this.priceList$ = this.plservice.getPriceList();
     this.priceList$.pipe(take(1)).subscribe((newPricelList) => {
       this.quote.PriceList = newPricelList;
       this.onQuoteUpdate.emit(this.quote);
     });
   }
-/**
-  * Event handler for when the primary contact input changes.
-  * @param event The event that was fired.
-  */
-primaryContactChange() {
-  if (this.contactId) {
-    this.contactService.fetch(this.contactId)
-      .pipe(take(1))
-      .subscribe((newPrimaryContact: Contact) => {
-        this.quote.Primary_Contact = newPrimaryContact;
-        this.quote.Primary_ContactId = newPrimaryContact.Id;
-        this.onQuoteUpdate.emit(this.quote);
-      });
-  } else {
-    this.quote.Primary_Contact = null;
-    this.onQuoteUpdate.emit(this.quote);
+
+  primaryContactChange() {
+    if (this.contactId) {
+      this.contactService.fetch(this.contactId)
+        .pipe(take(1))
+        .subscribe((newPrimaryContact: Contact) => {
+          this.quote.Primary_Contact = newPrimaryContact;
+          this.quote.Primary_ContactId = newPrimaryContact.Id;
+          this.onQuoteUpdate.emit(this.quote);
+        });
+    } else {
+      this.quote.Primary_Contact = null;
+      this.onQuoteUpdate.emit(this.quote);
+    }
   }
-}
 }

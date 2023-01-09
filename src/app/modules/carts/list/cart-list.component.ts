@@ -23,21 +23,15 @@ export class CartListComponent implements OnInit {
   cart: Cart;
   view$: Observable<CartListView>;
   cartAggregate$: Observable<any>;
-  /** @ignore */
   type = Cart;
 
-  /**
-   * @ignore
-   */
   constructor(private cartService: CartService, public priceService: PriceService,
     private modalService: BsModalService, private translateService: TranslateService) { }
-  /**
-   * @ignore
-   */
+
   ngOnInit() {
     this.loadView();
   }
-  /** @ignore */
+
   loadView() {
     this.view$ = this.cartService.getMyCart()
       .pipe(
@@ -109,7 +103,6 @@ export class CartListComponent implements OnInit {
       );
   }
 
-  /** @ignore */
   private getCartAggregate(): any {
     return this.cartAggregate$ = this.cartService.query({
       aggregate: true,
@@ -118,19 +111,12 @@ export class CartListComponent implements OnInit {
     }).pipe(map(first));
   }
 
-  /**
-   * Creates new cart for logged in user based on input.
-   * @param template Modal input for taking user inputs for new cart.
-   */
   newCart(template: TemplateRef<any>) {
     this.cart = new Cart();
     this.message = null;
     this.modalRef = this.modalService.show(template);
   }
 
-  /**
-   * @ignore
-   */
   createCart() {
     this.loading = true;
     this.cartService.createNewCart(this.cart).pipe(take(1)).subscribe(
@@ -148,34 +134,25 @@ export class CartListComponent implements OnInit {
     );
   }
 
-  /**
-   * This function returns Observable of NetPrice
-   * @param currentCart Current cart object from where we need to fetch cart total.
-   */
   getCartTotal(currentCart: Cart) {
     return this.priceService.getCartPrice(currentCart).pipe(mergeMap((price: Price) => price.netPrice$));
   }
 
-  /**@ignore */
   canDelete(cartToDelete: Cart) {
     return (cartToDelete.Status !== 'Finalized');
   }
 
-  /**@ignore */
   canActivate(cartToActivate: Cart) {
     return (CartService.getCurrentCartId() !== cartToActivate.Id && cartToActivate.Status !== 'Finalized');
   }
 
-  /**@ignore */
   getFilters(): Array<AFilter> {
     return new Array(new AFilter(this.cartService.type, [
       new ACondition(this.cartService.type, 'Status', 'NotEqual', 'Saved')
     ]));
   }
-
-
 }
-/** @ignore */
+
 interface CartListView {
   tableOptions: TableOptions;
   type: ClassType<AObject>;

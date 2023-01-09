@@ -231,9 +231,6 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
     );
   }
 
-  /**
-   * @ignore
-   */
   fileChange(event) {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
@@ -243,9 +240,7 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * @ignore
-   */
+
   hasFileSizeExceeded(fileList, maxSize) {
     let totalFileSize = 0;
     for (let i = 0; i < fileList.length; i++) {
@@ -254,16 +249,10 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
     this.hasSizeError = totalFileSize > maxSize;
   }
 
-  /**
-   * @ignore
-   */
   onDragFile(event) {
     event.preventDefault();
   }
 
-  /**
-   * @ignore
-   */
   onDropFile(event) {
     event.preventDefault();
     const itemList: DataTransferItemList = event.dataTransfer.items;
@@ -285,9 +274,6 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
     this.file = this.uploadFileList[0];
   }
 
-  /**
-   * @ignore
-   */
   clearFiles() {
     this.file = null;
     this.uploadFileList = null;
@@ -301,9 +287,6 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
       ).subscribe((attachments: Array<Attachment>) => this.ngZone.run(() => this.attachmentList$.next(attachments)));
   }
 
-  /**
-   * @ignore
-   */
   uploadAttachment(parentId: string) {
     this.attachmentsLoader = true;
     this.attachmentService.uploadAttachment(this.file, parentId).pipe(take(1)).subscribe(res => {
@@ -317,20 +300,14 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  /**
-   * @ignore
-   */
   downloadAttachment(attachmentId: string, parentId: string) {
     return this.productInformationService.getAttachmentUrl(attachmentId, parentId);
   }
 
-  /**
-   * @ignore
-   */
   getTotalPromotions(quote: Quote): number {
     return ((get(quote, 'QuoteLineItems.length') > 0)) ? sum(get(quote, 'QuoteLineItems').map(res => res.IncentiveAdjustmentAmount)) : 0;
   }
-  
+
   editQuoteItems(quoteId: string) {
     this.editLoader = true;
     this.quoteService.convertQuoteToCart(quoteId).pipe(
@@ -345,7 +322,7 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
         this.editLoader = false;
       });
   }
-  
+
   closeModal() {
     this.intimationModal.hide();
     this.quoteService.where([new ACondition(Quote, 'Id', 'In', this.activatedRoute.snapshot.params.id)], 'AND', null, null, null, null, true).subscribe(res => {
@@ -358,9 +335,7 @@ export class QuoteDetailComponent implements OnInit, OnDestroy {
     this.getQuote();
     this.quoteGenerated = true;
   }
-  /**
-   * @ignore
-   */
+
   ngOnDestroy() {
     if (this.notesSubscription)
       this.notesSubscription.unsubscribe();

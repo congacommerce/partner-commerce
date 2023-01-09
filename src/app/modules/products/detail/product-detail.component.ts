@@ -35,18 +35,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   product: Product;
   subscriptions: Array<Subscription> = new Array<Subscription>();
 
-  /**
-   * Flag to detect if there is change in product configuration.
-   */
   configurationChanged: boolean = false;
-  /**
-   * Flag to detect if there is pending in product configuration.
-   */
+
   configurationPending: boolean = false;
 
   currentQty: number;
 
-  /**@ignore */
   relatedTo: CartItem;
   cart: Cart;
   netPrice: number = 0;
@@ -124,23 +118,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }));
   }
 
-  /**
-   * onConfigurationChange method is invoked whenever there is change in product configuration and this method sets flag
-   * isConfigurationChanged to true.
-   */
   onConfigurationChange(result: any) {
     this.product = first(result);
     this.cartItemList = result[1];
     if (get(last(result), 'optionChanged') || get(last(result), 'attributeChanged')) this.configurationChanged = true;
   }
-
-
-  /**
-   * Changes the quantity of the cart item passed to this method.
-   *
-   * @param cartItem Cart item reference to the cart line item object.
-   * @fires CartService.updateCartItems()
-   */
 
   handleStartChange(cartItem: CartItem) {
     this.cartService.updateCartItems([cartItem]);
@@ -169,10 +151,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  /**
-   * Change the product quantity and update the primary cartItem
-   * to see the updated the netprice of the product.
-   */
   changeProductQuantity(newQty: any) {
     if (this.cartItemList && this.cartItemList.length > 0)
       forEach(this.cartItemList, c => {
@@ -181,12 +159,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  /**
-   * Changes the quantity of the cart item passed to this method.
-   *
-   * @param cartItem Cart item reference to the cart line item object.
-   * @fires CartService.updateCartItems()
-   */
   handleEndDateChange(cartItem: CartItem) {
     this.cartService.updateCartItems([cartItem]);
   }
@@ -214,22 +186,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 }
 
-/** @ignore */
 export interface ProductDetailsState {
-  /**
-   * The product to display.
-   */
   product: Product;
-  /**
-   * The CartItem related to this product.
-   */
   relatedTo: CartItem;
-  /**
-   * Quantity to set to child components
-   */
   quantity: number;
-  /**
-   * The storefront.
-   */
   storefront: Storefront;
 }
