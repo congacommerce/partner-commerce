@@ -1,6 +1,6 @@
 # Digital Commerce Core Reference Template
 
-This is the base reference application for the conga ecommerce product. Follow the below instructions to get started. See the [docs]( https://apttus-ecom.github.io/May22/index.html ) for more detailed instructions on interacting with the underlying SDK.
+This is the base reference application for the conga ecommerce product. Follow the below instructions to get started. See the [docs]( https://congacommerce.github.io/documentation-june23/index.html ) for more detailed instructions on interacting with the underlying SDK.
 
 ---
 ## Table of content 
@@ -166,7 +166,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Deploy to your salesforce org
 To Deploy The Digital Commerce application on your Salesforce Org.
 
-Refer the [docs](https://documentation.conga.com/digital-commerce/may-22/deploying-the-application-to-salesforce-161156294.html)
+Refer the [docs](https://documentation.conga.com/digital-commerce/june-23/deploying-the-application-to-salesforce-161156294.html)
 
 <div id="running-unit-tests"/>
 
@@ -184,7 +184,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Digital Commerce SDK
 
-The objective of this section is to provide information about reference templates, base libraries, models, and components that can be inherited and reused. This section also provides information about services that are sufficient for most of the business logic. You can create orders, create quotes, and more with the **DC SDK**. See the [Docs](https://documentation.conga.com/digital-commerce/may-22/digital-commerce-sdk-167772458.html) for more information.
+The objective of this section is to provide information about reference templates, base libraries, models, and components that can be inherited and reused. This section also provides information about services that are sufficient for most of the business logic. You can create orders, create quotes, and more with the **DC SDK**. See the [Docs](https://documentation.conga.com/digital-commerce/june-23/digital-commerce-sdk-167772458.html) for more information.
 
 <div id="digital-commerce-for-rest-api-developers"/>
 
@@ -192,7 +192,7 @@ The objective of this section is to provide information about reference template
 
 This section is designed to provide administrators with information on the micro-service architecture that enables commerce into any part of an application.
 
-Refer the [Docs](https://documentation.conga.com/digital-commerce/may-22/digital-commerce-for-rest-api-developers-157582100.html) to get detailed information of DC REST API
+Refer the [Docs](https://documentation.conga.com/partner-commerce/june-23/salesforce/cpq-rest-api-version-4-213458753.html) to get detailed information of DC REST API
 
 <div id="further-help"/>
 
