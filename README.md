@@ -1,6 +1,6 @@
 # Digital Commerce Core Reference Template
 
-This is the base reference application for the conga ecommerce product. Follow the below instructions to get started. See the [docs](https://congacommerce.github.io/documentation-february25/) for more detailed instructions on interacting with the underlying SDK.
+This is the base reference application for the conga ecommerce product. Follow the below instructions to get started. See the [docs](https://congacommerce.github.io/documentation-june25/) for more detailed instructions on interacting with the underlying SDK.
 
 ---
 ## Table of content 
@@ -24,7 +24,7 @@ This is the base reference application for the conga ecommerce product. Follow t
 <div id="install-managed-package"/>
 
 ## Install the managed package in your org
-Login to your org and use the following [link](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tKg0000004e0I) to install the managed package. The managed package requires a password, and you'll need to reach out to a Conga representative to obtain this.
+Login to your org and use the following [link](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tKg000000cCUM) to install the managed package. The managed package requires a password, and you'll need to reach out to a Conga representative to obtain this.
 
 <div id="prerequisites"/>
 
@@ -184,7 +184,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Digital Commerce SDK
 
-The objective of this section is to provide information about reference templates, base libraries, models, and components that can be inherited and reused. This section also provides information about services that are sufficient for most of the business logic. You can create orders, create quotes, and more with the **DC SDK**. See the [Docs](https://congacommerce.github.io/documentation-february25/) for more information.
+The objective of this section is to provide information about reference templates, base libraries, models, and components that can be inherited and reused. This section also provides information about services that are sufficient for most of the business logic. You can create orders, create quotes, and more with the **DC SDK**. See the [Docs](https://congacommerce.github.io/documentation-june25/) for more information.
 
 <div id="digital-commerce-for-rest-api-developers"/>
 
