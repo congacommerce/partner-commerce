@@ -63,3 +63,10 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// Node.js Buffer polyfill
+import { Buffer } from 'buffer';
+const globalScope = globalThis as any;
+if (!globalScope.Buffer) {
+    globalScope.Buffer = Buffer;
+}
