@@ -1,23 +1,23 @@
 <div *ngIf="cart$ | async as cart" class="d-flex justify-content-between w-100 align-items-center ActionBar">
   <div class="d-flex align-self-stretch">
-    <div class="border-left px-3 d-flex align-items-center">
+    <div class="border-start px-3 d-flex align-items-center">
       <apt-output-field [record]="cart" field="AccountId" label="{{'COMMON.ACCOUNT' | translate}}" layout="inline" [showQuickView]="true" (onChange)="changeAccount($event)" #accountField>
       </apt-output-field>
     </div>
 
-    <!-- <div class="border-left px-3 d-flex align-items-center">
+    <!-- <div class="border-start px-3 d-flex align-items-center">
       <apt-output-field [record]="cart" field="PriceListId" label="Price List" layout="inline" [showQuickView]="true" (onChange)="handlePriceListChange($event)" #priceListField>
       </apt-output-field>
     </div> -->
 
-    <div *ngIf="cart?.Order?.Id" class="border-left px-3 d-flex align-items-center">
+    <div *ngIf="cart?.Order?.Id" class="border-start px-3 d-flex align-items-center">
       <apt-output-field [record]="cart" field="OrderId" label="{{'COMMON.ORDER_ID' | translate}}" layout="inline" [showQuickView]="true" [editable]="false"></apt-output-field>
-      <span class="badge badge-info ml-1">{{cart?.Order?.Status}}</span>
+      <span class="badge text-bg-info ms-1">{{cart?.Order?.Status}}</span>
     </div>
 
-    <div *ngIf="cart?.Proposald?.Name" class="border-left px-3 d-flex align-items-center">
+    <div *ngIf="cart?.Proposald?.Name" class="border-start px-3 d-flex align-items-center">
       <apt-output-field [record]="cart" field="ProposaldId" label="{{'COMMON.QUOTE_ID' | translate}}" layout="inline" [showQuickView]="true" [editable]="false"></apt-output-field>
-      <span class="badge badge-info ml-1">{{cart?.Proposald?.Approval_Stage}}</span>
+      <span class="badge text-bg-info ms-1">{{cart?.Proposald?.Approval_Stage}}</span>
     </div>
 
     <div *ngIf="cart?.OrderId || cart?.ProposaldId" class="d-flex">

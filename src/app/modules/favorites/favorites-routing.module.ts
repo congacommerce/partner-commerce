@@ -8,16 +8,19 @@ import { FavoriteListComponent } from './list/favorite-list/favorite-list.compon
 const routes: Routes = [
   {
     path: '',
+    title: 'Favorites',
     component: DashboardViewComponent,
     children: [
       {
         path: '',
+        title: 'Favorites',
         component: FavoriteListComponent
       }
     ]
   },
   {
     path: ':id',
+    title: 'Favorite Details',
     component: FavoriteDetailComponent
   }
 ];

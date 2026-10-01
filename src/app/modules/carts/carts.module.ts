@@ -12,7 +12,7 @@ import { ComponentModule } from '../../components/component.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
-import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ProductCarouselModule, ConfigurationSummaryModule, PriceModule, PromotionModule, InputDateModule,
         LineItemTableRowModule, BreadcrumbModule, IconModule, TaxPopHoverModule, PriceSummaryModule, OutputFieldModule,
         InputFieldModule, AlertModule, ConstraintRuleModule, SelectAllModule } from '@congacommerce/elements';
@@ -39,7 +39,6 @@ import { TableModule, ChartModule } from '@congacommerce/elements';
     ComponentModule,
     TabsModule.forRoot(),
     ModalModule.forRoot(),
-    DatepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
     PopoverModule.forRoot(),

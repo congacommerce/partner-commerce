@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-compare-layout',
   templateUrl: './compare-layout.component.html',
-  styleUrls: ['./compare-layout.component.scss']
+  styleUrls: ['./compare-layout.component.scss'],
+  standalone: false
 })
 export class CompareLayoutComponent implements OnInit, OnDestroy {
   /**

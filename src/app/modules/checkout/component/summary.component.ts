@@ -9,7 +9,7 @@ import {
 } from '@congacommerce/ecommerce';
 import * as _ from 'lodash';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductConfigurationSummaryComponent } from '@congacommerce/elements';
 
@@ -29,7 +29,8 @@ import { ProductConfigurationSummaryComponent } from '@congacommerce/elements';
         padding: 26px;
         font-size: 75px;
     }
-  `]
+  `],
+  standalone: false
 })
 export class SummaryComponent implements OnChanges {
   @Input()

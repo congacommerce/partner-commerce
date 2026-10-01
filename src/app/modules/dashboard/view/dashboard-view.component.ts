@@ -6,7 +6,8 @@ import { UserService, Quote, User, Cart, CartService, StorefrontService } from '
 @Component({
   selector: 'app-dashboard-view',
   templateUrl: './dashboard-view.component.html',
-  styleUrls: ['./dashboard-view.component.scss']
+  styleUrls: ['./dashboard-view.component.scss'],
+  standalone: false
 })
 export class DashboardViewComponent implements OnInit {
 

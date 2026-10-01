@@ -11,7 +11,8 @@ import { TableOptions, TableAction, ExceptionService } from '@congacommerce/elem
 @Component({
   selector: 'app-favorite-list',
   templateUrl: './favorite-list.component.html',
-  styleUrls: ['./favorite-list.component.scss']
+  styleUrls: ['./favorite-list.component.scss'],
+  standalone: false
 })
 export class FavoriteListComponent implements OnInit {
 

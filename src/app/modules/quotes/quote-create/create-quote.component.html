@@ -19,9 +19,8 @@
     
     <ng-template #confirmationTemplate>
         <div class="modal-header">
-            <h5 class="modal-title pull-left"> {{'QUOTE_CONFIRMATION_MODAL.QUOTE_REQUEST' | translate}} </h5>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="confirmationModal.hide()" [routerLink]="['/proposals', quoteConfirmation.Id]">
-                <span aria-hidden="true">&times;</span>
+            <h5 class="modal-title float-start"> {{'QUOTE_CONFIRMATION_MODAL.QUOTE_REQUEST' | translate}} </h5>
+            <button type="button" class="btn-close float-end" aria-label="Close" (click)="confirmationModal.hide()" [routerLink]="['/proposals', quoteConfirmation.Id]">
             </button>
         </div>
         <div class="modal-body d-flex flex-column justify-content-center py-4">

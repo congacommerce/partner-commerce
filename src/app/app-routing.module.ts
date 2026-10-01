@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { LoginGuard, GuestGuard } from '@congacommerce/ecommerce';
+import { LoginGuard } from '@congacommerce/ecommerce';
 import { environment } from '../environments/environment';
 import { MainComponent } from './main.component';
 import { RouteGuard } from './services/route.guard';
 import { ConstraintRuleGuard } from './services/constraint-rule.guard';
 import { AboGuard } from './services/abo.guard';
+import { WildcardGuard } from './services/wildcard.guard';
 
 @NgModule({
   imports: [
@@ -15,11 +16,7 @@ import { AboGuard } from './services/abo.guard';
         children: [
           {
             path: 'u',
-            loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
-            canActivate: [GuestGuard],
-            data: {
-              redirectUrl: ''
-            }
+            loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
           },
           {
             path: '',
@@ -84,6 +81,11 @@ import { AboGuard } from './services/abo.guard';
                 data: { title: 'Favorites'}
               },
             ]
+          },
+          {
+            path: '**',
+            canActivate: [WildcardGuard],
+            children: []
           }
         ]
       }

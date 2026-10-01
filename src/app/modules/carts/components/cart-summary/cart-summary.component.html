@@ -6,7 +6,7 @@
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <span> {{'MANAGE_CART.CART_SUMMARY.TOTAL_PRICE' | translate }} </span>
-      <span class="font-weight-bold">
+      <span class="fw-bold">
         <apt-price [record]="cart"></apt-price>
       </span>
     </div>
@@ -28,7 +28,7 @@
     <hr class="mt-2 mb-3" />
     <div class="d-flex justify-content-between">
       <span> {{'MANAGE_CART.CART_SUMMARY.SUB_TOTAL' | translate }} </span>
-      <span class="font-weight-bold">
+      <span class="fw-bold">
         <apt-price [record]="cart"></apt-price>
       </span>
     </div>
@@ -46,7 +46,7 @@
     </div>
      -->
     <!-- <div class="d-flex justify-content-end" *ngIf="cart.Proposald?.Id">
-      <button class="btn btn-link mr-2" (click)="openDiscardChageModals()"  [ladda]="cart?._state === 'pending'" data-style="zoom-in"
+      <button class="btn btn-link me-2" (click)="openDiscardChageModals()"  [ladda]="cart?._state === 'pending'" data-style="zoom-in"
       [disabled]="!cart?.LineItems || cart?.LineItems?.length === 0 || hasErrors === true">
         {{'MANAGE_CART.CART_SUMMARY.DISCARD_CHANGES' | translate }}
       </button>
@@ -68,16 +68,15 @@
     <small class="mb-3 d-block">
       Request a quote for your configuration and someone will be in touch to discuss next steps.
     </small>
-    <button class="btn btn-block btn-outline-primary" [ladda]="state.requestQuoteLoading" data-style="zoom-in" (click)="createQuote()"
+    <button class="btn btn-outline-primary" [ladda]="state.requestQuoteLoading" data-style="zoom-in" (click)="createQuote()"
       data-spinner-color="black" [disabled]="!cart?.LineItems || cart?.LineItems?.length === 0">Request a Quote</button>
   </div>
 </div> -->
 
 <ng-template #discardChangesTemplate>
   <div class="modal-header">
-    <h4 class="modal-title pull-left"> {{'MANAGE_CART.DISCARD_CHANGES_MODAL.DISCARD_CHANGES_TITLE' | translate}} </h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="discardChangesModal.hide()">
-      <span aria-hidden="true">&times;</span>
+    <h4 class="modal-title float-start"> {{'MANAGE_CART.DISCARD_CHANGES_MODAL.DISCARD_CHANGES_TITLE' | translate}} </h4>
+    <button type="button" class="btn-close float-end" aria-label="Close" (click)="discardChangesModal.hide()">
     </button>
   </div>
   <div class="modal-body flex-column justify-content-center">

@@ -3,14 +3,15 @@ import { Cart, CartItem, CartService, ConstraintRuleService, LineItemService, Pr
 import { Observable, combineLatest } from 'rxjs';
 import { filter, get, isNil }  from 'lodash';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { map as rmap, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart-detail',
   templateUrl: './cart-detail.component.html',
   styleUrls: ['./cart-detail.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
+  standalone: false
 })
 
 export class CartDetailComponent implements OnInit {

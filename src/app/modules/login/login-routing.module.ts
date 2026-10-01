@@ -7,10 +7,12 @@ import { LogoutViewComponent } from './view/logout-view.component';
 const routes: Routes = [
   {
     path: 'login',
+    title: 'Login',
     component: LoginViewComponent
   },
   {
     path: 'logout',
+    title: 'Logout',
     component: LogoutViewComponent
   }
 ];

@@ -7,10 +7,12 @@ import { PaymentMessageComponent } from './components/payment-message/payment-me
 const routes: Routes = [
     {
         path: '',
+        title: 'Payment',
         component: PaymentDetailsComponent
       },
     {
         path: 'payment-message',
+        title: 'Payment Message',
         component: PaymentMessageComponent
     },
 ];

@@ -3,7 +3,7 @@
 <ng-template #cartList let-view="view">
     <!-- Total Carts and Add new Cart action button -->
     <div class="card mb-2">
-        <nav class="navbar navbar-light bg-white d-flex justify-content-between">
+        <nav class="navbar navbar-light bg-white d-flex justify-content-between px-3">
             <span class="navbar-brand">
                 {{'COMMON.CARTS' | translate}}
                 <span *ngIf="cartAggregate$ | async as cartAggregate">({{cartAggregate?.total_records}})</span>
@@ -27,9 +27,8 @@
     <ng-template #template>
         <form (ngSubmit)="createCart()">
             <div class="modal-header">
-                <h4 class="modal-title pull-left">{{'MY_ACCOUNT.CART_LIST.CREATE_NEW' | translate}}</h4>
-                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                    <span aria-hidden="true">&times;</span>
+                <h4 class="modal-title float-start">{{'MY_ACCOUNT.CART_LIST.CREATE_NEW' | translate}}</h4>
+                <button type="button" class="btn-close float-end" aria-label="Close" (click)="modalRef.hide()">
                 </button>
             </div>
             <div class="modal-body">

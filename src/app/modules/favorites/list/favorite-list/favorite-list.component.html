@@ -1,5 +1,5 @@
 <div class="card mb-2">
-    <nav class="navbar navbar-light bg-white d-flex">
+    <nav class="navbar navbar-light bg-white d-flex px-3">
       <span class="navbar-brand">
         {{'COMMON.FAVORITES' | translate}}
         <span *ngIf="favoritesAggregate$ | async as favoritesAggregate">({{favoritesAggregate?.total_records}})</span>

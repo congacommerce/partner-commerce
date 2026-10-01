@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LaddaModule } from 'angular2-ladda';
 import { TranslateModule } from '@ngx-translate/core';
-import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { PricingModule } from '@congacommerce/ecommerce';
 import {
@@ -36,7 +36,6 @@ import { RequestQuoteFormComponent } from './request-quote-form/request-quote-fo
     FormsModule,
     PriceModule,
     PricingModule,
-    DatepickerModule.forRoot(),
     BsDatepickerModule.forRoot(),
     InputSelectModule,
     BreadcrumbModule,

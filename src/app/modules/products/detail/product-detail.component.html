@@ -8,13 +8,13 @@
 
     <div class="primary-actions">
         <form class="d-flex">
-            <div class="form-group my-0 mr-5">
+            <div class="mb-3 my-0 me-5">
                 <small class="mb-2 d-block"> {{'PRODUCT_DETAILS.STANDARD_PRICE' | translate}} </small>
                 <h5>
                     <apt-price [record]="viewState?.product" type="list" [bundle]="true"></apt-price>
                   </h5>
             </div>
-            <div class="form-group my-0 mr-3">
+            <div class="mb-3 my-0 me-3">
                 <small class="mb-2 d-block"> {{'COMMON.NET_PRICE' | translate}} </small>
                 <h5>
                     <apt-price [record]="cartItemList" *ngIf="cartItemList?.length > 0; else productPrice"
@@ -32,8 +32,8 @@
         <!-- Simple Product Controls -->
         <form class="d-flex justify-content-end"
             *ngIf="!viewState?.product?.HasAttributes && !viewState?.product?.HasOptions; else complex">
-            <div class="form-group mx-3 my-0 d-flex align-items-center">
-                <span class="mr-3"> {{'COMMON.QUANTITY' | translate}} </span>
+            <div class="mb-3 mx-3 my-0 d-flex align-items-center">
+                <span class="me-3"> {{'COMMON.QUANTITY' | translate}} </span>
                 <input type="number" min="1" class="w-75 form-control" [(ngModel)]="viewState.quantity"
                     name="quantity" />
             </div>
@@ -48,10 +48,10 @@
 
         <!-- Complex Product Controls -->
         <ng-template #complex>
-            <div class="d-flex">
+            <div class="d-flex align-items-center">
                 <ng-container *ngIf="viewState?.relatedTo; else newProduct">
-                    <div class="form-group mx-3 my-0 d-flex align-items-center">
-                        <span class="mr-3"> {{'COMMON.QUANTITY' | translate}} </span>
+                    <div class="mx-3 d-flex align-items-center">
+                        <span class="me-3"> {{'COMMON.QUANTITY' | translate}} </span>
                         <input type="number" min="1" class="w-75 form-control" [(ngModel)]="viewState.quantity" (ngModelChange)="changeProductQuantity(viewState.quantity)" name="quantity" />
                     </div>
                     <apt-add-to-cart [showQuantityControls]="false" [configurationEnabled]="false"
@@ -64,10 +64,10 @@
                 </ng-container>
 
                 <ng-template #newProduct>
-                    <div class="d-flex justify-content-end">
-                        <div class="form-group mx-3 my-0 d-flex align-items-center"
+                    <div class="d-flex justify-content-end align-items-center">
+                        <div class="mx-3 d-flex align-items-center"
                             *ngIf="viewState?.storefront?.ConfigurationLayout !== 'Embedded'">
-                            <span class="mr-3"> {{'COMMON.QUANTITY' | translate}} </span>
+                            <span class="me-3"> {{'COMMON.QUANTITY' | translate}} </span>
                             <input type="number" min="1" class="w-75 form-control" [(ngModel)]="viewState.quantity"
                                 (ngModelChange)="changeProductQuantity(viewState.quantity)" name="quantity" />
                         </div>
@@ -78,13 +78,13 @@
                                 [cartItems]="(viewState?.storefront?.ConfigurationLayout === 'Embedded' && relatedTo)? [relatedTo] : cartItemList"
                                 [product]="product ? product: viewState?.product" [aboEnabled]="false"
                                 [label]="(viewState?.storefront?.ConfigurationLayout === 'Embedded') ? ('PRODUCT_DETAILS.SAVE_CHANGES' | translate) : ('COMMON.ADD_TO_CART' | translate)"
-                                [btnClass]="'btn-primary btn-raised px-3'">
+                                [btnClass]="'btn-primary btn-raised px-3 py-2'">
                             </apt-add-to-cart>
                         </div>
                     </div>
                 </ng-template>
 
-                <button class="btn btn-outline-primary ml-2"
+                <button class="btn btn-outline-primary btn-raised ms-2 px-3 py-2"
                     *ngIf="viewState?.storefront?.ConfigurationLayout !== 'Embedded' && (viewState?.product?.HasAttributes || viewState?.product?.HasOptions)"
                     (click)="showSummary();">{{'DETAILS.PRICE_SUMMARY' | translate}}</button>
             </div>
@@ -104,7 +104,7 @@
             <div class="col-12 col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <p [innerHTML]="viewState?.product?.Description" class="p-2"></p>
+                        <p [innerHTML]="viewState?.product?.Description | safeHtml" class="p-2"></p>
                     </div>
                 </div>
             </div>

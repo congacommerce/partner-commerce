@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -13,7 +13,7 @@ import { ConfigureGuard } from './services/configure.guard';
 import { RouteGuard } from './services/route.guard';
 import { AboGuard } from './services/abo.guard';
 import { ConstraintRuleGuard } from './services/constraint-rule.guard';
-import { ProductDrawerModule } from '@congacommerce/elements';
+import { ProductDrawerModule} from '@congacommerce/elements';
 
 // Locale data
 import { registerLocaleData } from '@angular/common';
@@ -41,7 +41,8 @@ registerLocaleData(localeIt, 'it-IT', localeItExtras);
     ApttusModalModule,
     IconModule
   ],
-  providers: [RouteGuard, ConstraintRuleGuard, ConfigureGuard, AboGuard, PartnerDetailsGuard],
+  providers: [provideZoneChangeDetection(), RouteGuard, ConstraintRuleGuard, ConfigureGuard, AboGuard, PartnerDetailsGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

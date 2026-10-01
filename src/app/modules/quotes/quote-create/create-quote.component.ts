@@ -3,14 +3,15 @@ import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { Quote, QuoteService, StorefrontService, Storefront, Cart, CartService } from '@congacommerce/ecommerce';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { TranslateService } from '@ngx-translate/core';
 import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-quote',
   templateUrl: `./create-quote.component.html`,
-  styles: []
+  styles: [],
+  standalone: false
 })
 export class CreateQuoteComponent implements OnInit {
   @ViewChild('confirmationTemplate') confirmationTemplate: TemplateRef<any>;

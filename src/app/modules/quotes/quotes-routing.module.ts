@@ -9,20 +9,24 @@ import { PartnerDetailsGuard } from '@congacommerce/ecommerce';
 const routes: Routes = [
   {
     path: '',
+    title: 'Proposals',
     component: DashboardViewComponent,
     children: [
       {
         component: QuoteListComponent,
-        path: ''
+        path: '',
+        title: 'Proposals'
       }
     ]
   },
   {
     path: 'create',
+    title: 'Create Proposal',
     component: CreateQuoteComponent,
   },
   {
     path: ':id',
+    title: 'Proposal Details',
     component: QuoteDetailComponent,
     canActivate: [PartnerDetailsGuard]
   }

@@ -7,88 +7,88 @@ import { AFilter } from '@congacommerce/core';
     <div class="card animated fadeIn">
       <div class="card-body">
         <h5 class="card-title">{{'INSTALLED_PRODUCTS.ASSET_ACTION_FILTER.ASSET_ACTION' | translate}} </h5>
-        <ul class="list-unstyled pl-2">
+        <ul class="list-unstyled ps-2">
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 #all
                 type="radio"
                 id="assetActionAll"
-                class="custom-control-input"
+                class="form-check-input"
                 name="assetAction"
                 value="All"
                 (change)="handleChange($event)"
                 [checked]="value === 'All' || value == null"
               >
-              <label class="custom-control-label" for="assetActionAll">
+              <label class="form-check-label" for="assetActionAll">
                 {{'INSTALLED_PRODUCTS.PRICE_TYPE_FILTER.ALL' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 #renew
                 type="radio"
                 id="renew"
-                class="custom-control-input"
+                class="form-check-input"
                 name="assetAction"
                 value="Renew"
                 (change)="handleChange($event)"
                 [checked]="value === 'Renew'"
               >
-              <label class="custom-control-label" for="renew">
+              <label class="form-check-label" for="renew">
                 {{'COMMON.RENEW' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 #terminate
                 type="radio"
                 id="terminate"
-                class="custom-control-input"
+                class="form-check-input"
                 name="assetAction"
                 value="Terminate"
                 (change)="handleChange($event)"
                 [checked]="value === 'Terminate'"
               >
-              <label class="custom-control-label" for="terminate">
+              <label class="form-check-label" for="terminate">
                 {{'COMMON.TERMINATE' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 #buyMore
                 type="radio"
                 id="buyMore"
-                class="custom-control-input"
+                class="form-check-input"
                 name="assetAction"
                 value="Buy More"
                 (change)="handleChange($event)"
                 [checked]="value === 'Buy More'"
               >
-              <label class="custom-control-label" for="buyMore">
+              <label class="form-check-label" for="buyMore">
                 {{'COMMON.BUY_MORE' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 #changeConfiguration
                 type="radio"
                 id="changeConfiguration"
-                class="custom-control-input"
+                class="form-check-input"
                 name="assetAction"
                 value="Change Configuration"
                 (change)="handleChange($event)"
                 [checked]="value === 'Change Configuration'"
               >
-              <label class="custom-control-label" for="changeConfiguration">
+              <label class="form-check-label" for="changeConfiguration">
                 {{'COMMON.CHANGE_CONFIGURATION' | translate}}
               </label>
             </div>
@@ -102,13 +102,14 @@ import { AFilter } from '@congacommerce/core';
       font-size: smaller;
       line-height: 24px;
     }
-    .custom-control-label:before {
+    .form-check-label:before {
       top: -2px;
     }
-    .custom-control-label:after {
+    .form-check-label:after {
       top: -2px;
     }
-  `]
+  `],
+  standalone: false
 })
 export class AssetActionFilterComponent {
 

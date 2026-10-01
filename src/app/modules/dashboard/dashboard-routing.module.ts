@@ -6,6 +6,7 @@ import { DashboardViewComponent } from './view/dashboard-view.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'Dashboard',
     component: DashboardViewComponent
   }
 ];

@@ -8,14 +8,17 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 const routes: Routes = [
   {
     path: '',
+    title: 'User Settings',
     component: DashboardViewComponent,
     children: [
       {
         path: '',
+        title: 'User Settings',
         component: SettingsComponent
       },
       {
         path: 'change-password',
+        title: 'Change Password',
         component: ChangePasswordComponent
       }
     ]

@@ -1,12 +1,4 @@
 @import "variables";
-@keyframes slide {
-  from {
-      top: $navbar-brand-height;
-  }
-  to {
-      top: 0;
-  }
-}
 
 .navbar{
     transition: all 0.2s ease 0s;
@@ -15,11 +7,11 @@
         box-shadow: $box-shadow;
         z-index: 1031;
         position: fixed;
-        animation-name: slide;
+        animation-name: navbar-subnav-slide;
         animation-duration: 0.2s;
     }
     &.expand{
-        top: calc(#{$navbar-brand-height} + 72px);
+        top: calc(#{$app-navbar-height} + 72px);
     }
     h3{
         max-width: 95%;
@@ -31,12 +23,6 @@
 
 .headerContainer{
     height: 230px;
-    .form-group{
-        margin-bottom: 0;
-        input:not(.form-control-plaintext){
-            width: 70px;
-        }
-    }
     label{
         white-space: nowrap;
     }
