@@ -13,10 +13,12 @@ const routes: Routes = [
   // route to land on the cart list page
   {
     path: '',
+    title: 'Carts',
     component: DashboardViewComponent,
     children: [
       {
         path: '',
+        title: 'Carts',
         component: CartListComponent
       }
     ]
@@ -24,11 +26,13 @@ const routes: Routes = [
   // Route to land on the active cart
   {
     path: 'active',
+    title: 'Active Cart',
     component: CartDetailComponent
   },
   // Route to land to specific cart
   {
     path: ':id',
+    title: 'Cart Details',
     component: CartDetailComponent
   }
 ];

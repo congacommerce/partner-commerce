@@ -9,7 +9,8 @@ import { NgForm, ControlContainer } from '@angular/forms';
   viewProviders: [{
     provide: ControlContainer,
     useExisting: NgForm
-  }]
+  }],
+  standalone: false
 })
 export class CardFormComponent implements OnInit {
 

@@ -28,7 +28,8 @@ import { ClassType } from 'class-transformer/ClassTransformer';
   selector: 'app-asset-list',
   templateUrl: './asset-list.component.html',
   styleUrls: ['./asset-list.component.scss'],
-  providers: [DatePipe]
+  providers: [DatePipe],
+  standalone: false
 })
 export class AssetListComponent implements OnInit, OnDestroy {
   /**

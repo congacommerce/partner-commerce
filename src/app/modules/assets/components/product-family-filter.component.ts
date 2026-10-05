@@ -18,7 +18,8 @@ import * as _ from 'lodash';
       ></apt-input-select>
     </div>
   </div>
-  `
+  `,
+  standalone: false
 })
 export class ProductFamilyFilterComponent implements OnInit {
 

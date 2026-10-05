@@ -26,7 +26,8 @@ import { Product } from '@congacommerce/ecommerce';
       font-size: smaller;
     }
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 /**
  * Tab Features Component displays the list of specifications for the product.

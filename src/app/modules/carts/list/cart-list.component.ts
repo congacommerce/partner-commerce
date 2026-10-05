@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { combineLatest, Observable, of } from 'rxjs';
 import { ClassType } from 'class-transformer/ClassTransformer';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,8 @@ import { TableOptions, TableAction } from '@congacommerce/elements';
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.scss']
+  styleUrls: ['./cart-list.component.scss'],
+  standalone: false
 })
 export class CartListComponent implements OnInit {
   modalRef: BsModalRef;
@@ -110,7 +111,7 @@ export class CartListComponent implements OnInit {
   }
 
   /** @ignore */
-  private getCartAggregate(): any {
+  private getCartAggregate(): Observable<any> {
     return this.cartAggregate$ = this.cartService.query({
       aggregate: true,
       skipCache: true,

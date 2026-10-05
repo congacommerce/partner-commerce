@@ -14,11 +14,9 @@ import { TranslateService } from '@ngx-translate/core';
       </div>
 
       <div class="d-flex align-items-center">
-        <div class="input-group input-group-sm mr-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="sort">{{'PRODUCT_LIST.SHOW' | translate}}</label>
-          </div>
-          <select class="custom-select custom-select-sm" id="size" [(ngModel)]="limit" name="limit" (change)="onPageSizeChange.emit($event.target.value)">
+        <div class="input-group input-group-sm me-3">
+          <label class="input-group-text" for="size">{{'PRODUCT_LIST.SHOW' | translate}}</label>
+          <select class="form-select form-select-sm" id="size" [(ngModel)]="limit" name="limit" (change)="onPageSizeChange.emit($event.target.value)">
             <option value="4">4</option>
             <option value="12">12</option>
             <option value="20">20</option>
@@ -26,11 +24,9 @@ import { TranslateService } from '@ngx-translate/core';
           </select>
         </div>
 
-        <div class="input-group input-group-sm mr-3">
-          <div class="input-group-prepend">
-            <label class="input-group-text" for="sort">{{'PRODUCT_LIST.SORT_BY' | translate}}</label>
-          </div>
-          <select class="custom-select custom-select-sm" id="sort" [(ngModel)]="sortBy" name="sortBy" (change)="onSortChange.emit($event.target.value)">
+        <div class="input-group input-group-sm me-3">
+          <label class="input-group-text" for="sort">{{'PRODUCT_LIST.SORT_BY' | translate}}</label>
+          <select class="form-select form-select-sm" id="sort" [(ngModel)]="sortBy" name="sortBy" (change)="onSortChange.emit($event.target.value)">
             <option [value]="'Relevance'">{{'PRODUCT_LIST.SORT_BY_RELEVANCE' | translate}}</option>
             <option [value]="'Name'">{{'COMMON.NAME' | translate}}</option>
           </select>
@@ -59,7 +55,8 @@ import { TranslateService } from '@ngx-translate/core';
     .move-down{
       margin-top: 1px;
     }
-  `]
+  `],
+  standalone: false
 })
 export class ResultsComponent implements OnChanges{
   @Input() recordCount: number;

@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { Card } from '../component/card-form/card-form.component';
 import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { get, uniqueId, find, defaultTo } from 'lodash';
@@ -16,7 +16,8 @@ import { ExceptionService, PriceSummaryComponent, LookupOptions } from '@congaco
 @Component({
   selector: 'app-cart',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  styleUrls: ['./checkout.component.scss'],
+  standalone: false
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
   @ViewChild('addressTabs') addressTabs: any;
@@ -353,8 +354,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       });
     }
     this.isPaymentCompleted = true;
-    if (get(this.orderConfirmation, 'Id'))
-      this.subscriptions.push(this.emailService.guestUserNewOrderNotification(this.orderConfirmation.Id, `https://${window.location.hostname}${window.location.pathname}#/Orders/${this.orderConfirmation.Id}`).subscribe());
   }
 
   /**
@@ -373,8 +372,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       class: 'modal-lg'
     };
     this.confirmationModal = this.modalService.show(this.confirmationTemplate, ngbModalOptions);
-    if (get(this.orderConfirmation, 'Id'))
-    this.emailService.guestUserNewOrderNotification(this.orderConfirmation.Id, `${this.configurationService.resourceLocation()}orders/${this.orderConfirmation.Id}`).pipe(take(1)).subscribe();
   }
 
 

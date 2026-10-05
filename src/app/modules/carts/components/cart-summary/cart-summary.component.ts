@@ -3,7 +3,7 @@ import { Cart, StorefrontService, Storefront, UserService, CartService, TaxBreak
 import { Router } from '@angular/router';
 // import { QuoteService, Quote } from '@congacommerce/ecommerce';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable, of } from 'rxjs';
 import * as _ from 'lodash';
 import { take, flatMap } from 'rxjs/operators';
@@ -12,7 +12,8 @@ import { SummaryState } from '../../../checkout/component/summary.component';
 @Component({
   selector: 'app-cart-summary',
   templateUrl: './cart-summary.component.html',
-  styleUrls: ['./cart-summary.component.scss']
+  styleUrls: ['./cart-summary.component.scss'],
+  standalone: false
 })
 
 

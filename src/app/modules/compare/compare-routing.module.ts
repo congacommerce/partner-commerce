@@ -10,6 +10,7 @@ import { CompareLayoutComponent } from './layout/compare-layout.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'Product Comparison',
     component: CompareLayoutComponent
   }
 ];

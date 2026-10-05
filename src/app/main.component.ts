@@ -22,7 +22,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       }
     `
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class MainComponent implements OnInit {
 

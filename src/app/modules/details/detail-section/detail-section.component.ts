@@ -3,7 +3,8 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-detail-section',
   templateUrl: './detail-section.component.html',
-  styleUrls: ['./detail-section.component.scss']
+  styleUrls: ['./detail-section.component.scss'],
+  standalone: false
 })
 export class DetailSectionComponent implements OnInit {
 

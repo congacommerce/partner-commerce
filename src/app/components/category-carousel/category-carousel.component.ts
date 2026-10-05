@@ -8,7 +8,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-category-carousel',
   templateUrl: './category-carousel.component.html',
-  styleUrls: ['./category-carousel.component.scss']
+  styleUrls: ['./category-carousel.component.scss'],
+  standalone: false
 })
 export class CategoryCarouselComponent implements OnInit {
 

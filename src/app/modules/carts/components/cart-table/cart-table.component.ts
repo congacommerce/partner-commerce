@@ -5,7 +5,8 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-cart-table',
   templateUrl: './cart-table.component.html',
-  styleUrls: ['./cart-table.component.scss']
+  styleUrls: ['./cart-table.component.scss'],
+  standalone: false
 })
 export class CartTableComponent implements OnChanges {
   /**

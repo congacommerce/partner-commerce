@@ -7,7 +7,7 @@
   <div class="detail-header py-4">
     <div class="d-flex align-items-end mb-2">
       <h3 class="m-0">{{favorite?.Name}}</h3>
-      <span class="badge badge-info ml-3 px-3 py-1 border text-uppercase"
+      <span class="badge text-bg-info ms-3 px-3 py-1 border text-uppercase"
         *ngIf="!favorite?.Active">{{'MY_ACCOUNT.FAVORITE_DETAIL.INACTIVE' | translate}}</span>
     </div>
   </div>
@@ -30,13 +30,13 @@
                   (onChange)="updateFavorite($event, favorite, 'Name')">
                 </apt-output-field>
                 <div class="d-flex custom-field">
-                  <span class="font-weight-bold mr-1 mb-2">{{'FAVORITE.VISIBILITY' | translate}}:</span>
-                  <div *ngFor="let scope of favoriteScopes" class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" class="custom-control-input" [id]="scope" [name]="scope"
+                  <span class="fw-bold me-1 mb-2">{{'FAVORITE.VISIBILITY' | translate}}:</span>
+                  <div *ngFor="let scope of favoriteScopes" class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" [id]="scope" [name]="scope"
                       [disabled]="!(favorite?.Active && favorite?.OwnerId === user?.Id)"
                       [checked]="favorite.Scope === scope" [value]="scope"
                       (change)="updateFavorite(scope, favorite, 'Scope')" />
-                    <label class="custom-control-label mr-auto" [for]="scope">{{scope}}</label>
+                    <label class="form-check-label me-auto" [for]="scope">{{scope}}</label>
                   </div>
                 </div>
                 <apt-output-field [record]="favorite.CreatedBy" field="Name" layout="inline" [editable]="false"

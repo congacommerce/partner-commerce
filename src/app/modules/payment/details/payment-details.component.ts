@@ -9,7 +9,8 @@ import { PaymentTransaction, Order, UserService, OrderService } from '@congacomm
 @Component({
   selector: 'app-payment-details',
   templateUrl: './payment-details.component.html',
-  styleUrls: ['./payment-details.component.scss']
+  styleUrls: ['./payment-details.component.scss'],
+  standalone: false
 })
 export class PaymentDetailsComponent implements OnInit, OnDestroy {
 

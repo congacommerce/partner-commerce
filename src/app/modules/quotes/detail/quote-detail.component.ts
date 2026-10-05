@@ -4,7 +4,7 @@ import { filter, map, take, mergeMap, switchMap, startWith, tap } from 'rxjs/ope
 import { get, set, compact, uniq, find, cloneDeep, sum, defaultTo } from 'lodash';
 import { Observable, of, BehaviorSubject, Subscription, combineLatest } from 'rxjs';
 import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ACondition, ApiService } from '@congacommerce/core';
 import {
   UserService, QuoteService, Quote, Order, OrderService, Note, NoteService, AttachmentService,
@@ -16,7 +16,8 @@ import { ExceptionService, LookupOptions, RevalidateCartService } from '@congaco
   templateUrl: './quote-detail.component.html',
   styleUrls: ['./quote-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone: false
 })
 export class QuoteDetailComponent implements OnInit, OnDestroy {
 

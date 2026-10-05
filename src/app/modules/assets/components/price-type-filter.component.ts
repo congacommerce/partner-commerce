@@ -8,64 +8,64 @@ import { AssetLineItem } from '@congacommerce/ecommerce';
     <div class="card animated fadeIn">
       <div class="card-body">
         <h5 class="card-title">{{'INSTALLED_PRODUCTS.PRICE_TYPE_FILTER.PRICE_TYPE' | translate}} </h5>
-        <ul class="list-unstyled pl-2">
+        <ul class="list-unstyled ps-2">
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 type="radio"
                   id="priceTypeAll"
-                  class="custom-control-input"
+                  class="form-check-input"
                   name="priceType"
                   value=""
                   (change)="handleCheckChange($event)"
                   checked
                 >
-              <label class="custom-control-label" for="priceTypeAll">
+              <label class="form-check-label" for="priceTypeAll">
               {{'INSTALLED_PRODUCTS.PRICE_TYPE_FILTER.ALL' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 type="radio"
                 id="oneTime"
-                class="custom-control-input"
+                class="form-check-input"
                 name="priceType"
                 value="One Time"
                 (change)="handleCheckChange($event)"
               >
-              <label class="custom-control-label" for="oneTime">
+              <label class="form-check-label" for="oneTime">
               {{'INSTALLED_PRODUCTS.PRICE_TYPE_FILTER.ONE_TIME' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 type="radio"
                 id="recurring"
-                class="custom-control-input"
+                class="form-check-input"
                 name="priceType"
                 value="Recurring"
                 (change)="handleCheckChange($event)"
               >
-              <label class="custom-control-label" for="recurring">
+              <label class="form-check-label" for="recurring">
               {{'INSTALLED_PRODUCTS.PRICE_TYPE_FILTER.RECURRING' | translate}}
               </label>
             </div>
           </li>
           <li>
-            <div class="custom-control custom-radio">
+            <div class="form-check">
               <input
                 type="radio"
                 id="usage"
-                class="custom-control-input"
+                class="form-check-input"
                 name="priceType"
                 value="Usage"
                 (change)="handleCheckChange($event)"
               >
-              <label class="custom-control-label" for="usage">
+              <label class="form-check-label" for="usage">
               {{'INSTALLED_PRODUCTS.PRICE_TYPE_FILTER.USAGE' | translate}}
               </label>
             </div>
@@ -79,13 +79,14 @@ import { AssetLineItem } from '@congacommerce/ecommerce';
       font-size: smaller;
       line-height: 24px;
     }
-    .custom-control-label:before {
+    .form-check-label:before {
       top: -2px;
     }
-    .custom-control-label:after {
+    .form-check-label:after {
       top: -2px;
     }
-  `]
+  `],
+  standalone: false
 })
 export class PriceTypeFilterComponent {
   /**

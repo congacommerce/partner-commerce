@@ -9,16 +9,19 @@ import {PartnerDetailsGuard} from '@congacommerce/ecommerce';
 const routes: Routes = [
   {
     path: '',
+    title: 'Orders',
     component: DashboardViewComponent,
     children: [
       {
         path: '',
+        title: 'Orders',
         component: OrderListComponent
       }
     ]
   },
   {
     path: ':id',
+    title: 'Order Details',
     component: OrderDetailComponent,
     canActivate: [PartnerDetailsGuard],
   }

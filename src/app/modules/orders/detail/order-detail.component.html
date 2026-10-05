@@ -6,7 +6,7 @@
       <button type="button" class="btn btn-link text-primary px-4"
         (click)="confirmOrder(order.Id, order.PrimaryContactId)" [ladda]="isLoading" data-style="zoom-in"
         [disabled]="order.hasErrors">{{'ACTION_BAR.CONFIRM_ORDER' | translate}}</button>
-      <apt-generate-document [record]="order" class="align-items-stretch d-flex" (onStatusUpdate)="onGenerateOrder()">
+      <apt-generate-document [record]="order" class="align-items-center d-flex" (onStatusUpdate)="onGenerateOrder()">
       </apt-generate-document>
     </ng-container>
 
@@ -36,8 +36,8 @@
   <div class="detail-header py-4">
     <div class="d-flex align-items-center mb-2">
       <h3 class="m-0">{{order?.Name}}</h3>
-      <span class="badge badge-info ml-3 px-3 py-1 border text-uppercase" *ngIf="order?.Status">{{order?.Status}}</span>
-      <div *ngIf="order?.Proposal as proposal" class="ml-auto">
+      <span class="badge text-bg-info ms-3 px-3 py-1 border text-uppercase" *ngIf="order?.Status">{{order?.Status}}</span>
+      <div *ngIf="order?.Proposal as proposal" class="ms-auto">
         <apt-output-field [record]="proposal" field="Name" labelClass="d-none" layout="inline" [editable]="false"
           [showQuickView]="true"></apt-output-field>
       </div>
@@ -101,7 +101,7 @@
       <div class="card-body">
         <h5 class="py-2">
           {{'DETAILS.LINE_ITEMS' | translate}}
-          <button class="btn btn-sm btn-outline-primary px-4 ml-4"
+          <button class="btn btn-sm btn-outline-primary px-4 ms-4"
             *ngIf="order?.Status === 'Draft' || order?.Status === 'Generated' || order?.Status === 'Presented'"
             [ladda]="lineItemLoader" data-style="zoom-in" data-spinner-color="black"
             (click)="editOrderItems(order)">{{'COMMON.EDIT' | translate}}
@@ -128,10 +128,10 @@
           {{'DETAILS.COMMENTS' | translate}} <span *ngIf="noteList?.length > 0">({{noteList?.length}}) </span>
         </h5>
         <div class="row">
-          <div class="col-12 col-md-6 border-right note-container">
+          <div class="col-12 col-md-6 border-end note-container">
             <ng-scrollbar>
               <ng-container *ngIf="noteList?.length > 0; else emptyNotes">
-                <div class="my-3 pb-3 pl-3" *ngFor="let note of noteList">
+                <div class="my-3 pb-3 ps-3" *ngFor="let note of noteList">
                   <!-- <strong class="d-block">{{note?.Title}}</strong> -->
                   <div class="text-muted d-block mb-2"><strong>{{note?.CreatedBy?.Name}}</strong>
                     {{'COMMON.ON' | translate }}

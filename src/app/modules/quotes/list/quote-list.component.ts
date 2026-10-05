@@ -11,7 +11,8 @@ const _moment = moment;
 @Component({
   selector: 'app-quote-list',
   templateUrl: './quote-list.component.html',
-  styleUrls: ['./quote-list.component.scss']
+  styleUrls: ['./quote-list.component.scss'],
+  standalone: false
 })
 export class QuoteListComponent implements OnInit {
   type = Quote;

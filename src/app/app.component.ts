@@ -13,7 +13,8 @@ import { get } from 'lodash';
     </router-outlet>
     <apt-product-drawer *ngIf="showDrawer$ | async"></apt-product-drawer>
   `,
-  styles: [`.container{height: 90vh;}`]
+  styles: [`.container{height: 90vh;}`],
+  standalone: false
 })
 export class AppComponent implements OnInit{
   showDrawer$: Observable<boolean>;
@@ -31,3 +32,4 @@ export class AppComponent implements OnInit{
 
 
 }
+

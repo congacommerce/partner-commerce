@@ -7,7 +7,8 @@ import { MiniProfileComponent } from '@congacommerce/elements';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('profile', { static: false }) profile: MiniProfileComponent;
@@ -32,7 +33,8 @@ export class HeaderComponent implements OnInit {
 
   doLogout() {
     this.profile.doLogout();
-    this.router.navigate(['/'],{queryParams:{loggedOut:true}});
+    // The MiniProfileComponent.doLogout() handles navigation via window.location.reload()
+    // No need to navigate here as it would interfere with the logout process
   }
 
   @HostListener('window:scroll', ['$event'])

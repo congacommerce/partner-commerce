@@ -30,7 +30,8 @@ import { Observable } from 'rxjs';
         font-size: smaller;
       }
     `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 /**
  * Tab Attachments Component displays the list of attachment for the product.

@@ -17,13 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "showCircularDependencies": false,
             "preserveSymlinks": true,
             "outputPath": "../core/force-app/main/default/staticresources/PartnerCommerce",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.json",
+            "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -66,13 +65,12 @@
               "optimization": true,
               "outputHashing": "none",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "tsConfig": "tsconfig.json",
+              "tsConfig": "tsconfig.app.json",
               "serviceWorker": false,
               "budgets": [
                 {
@@ -164,7 +162,6 @@
       }
     }
   },
-  "defaultProject": "partner-commerce",
   "cli": {
     "analytics": false
   }

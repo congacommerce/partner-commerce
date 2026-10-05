@@ -3,7 +3,8 @@ import { last } from 'lodash';
 
 @Component({
   selector: 'app-payment-message',
-  template: ''
+  template: ``,
+  standalone: false
 })
 export class PaymentMessageComponent implements OnInit {
 

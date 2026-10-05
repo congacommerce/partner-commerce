@@ -1,13 +1,4 @@
 @import "variables";
-
-@keyframes slide {
-  from {
-      top: $navbar-brand-height;
-  }
-  to {
-      top: 0;
-  }
-}
 :host{
     display: block;
 }
@@ -18,12 +9,12 @@
         box-shadow: $box-shadow;
         z-index: 1031;
         position: fixed;
-        animation-name: slide;
+        animation-name: navbar-subnav-slide;
         animation-duration: 0.2s;
         background-color: $light;
     }
     &.expand{
-        top: calc(#{$navbar-brand-height} + 35px);
+        top: calc(#{$app-navbar-height} + 35px);
     }
     h3{
         max-width: 95%;
@@ -35,18 +26,19 @@
 
 .headerContainer{
     height: 15rem;
-    .form-group{
-        margin-bottom: 0;
-        input:not(.form-control-plaintext){
-            width: 70px;
-        }
-    }
     label{
         white-space: nowrap;
     }
     .nav-link{
+        padding: 0.5rem 1rem;
+        border: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 0;
+        color: var(--bs-body-color);
         &.active, &:hover{
-            border-bottom-width: 3px;
+            color: var(--bs-primary);
+            border-bottom-color: var(--bs-primary);
+            background-color: transparent;
         }
     }
     .actions{

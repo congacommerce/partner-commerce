@@ -15,7 +15,8 @@ import { ExceptionService } from '@congacommerce/elements';
       .container{
           height: 90vh;
       }
-    `]
+    `],
+  standalone: false
 })
 export class LoginViewComponent implements OnInit, OnDestroy {
 

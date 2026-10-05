@@ -11,7 +11,8 @@ import { TableOptions, FilterOptions } from '@congacommerce/elements';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss']
+  styleUrls: ['./order-list.component.scss'],
+  standalone: false
 })
 export class OrderListComponent implements OnInit {
   type = Order;
